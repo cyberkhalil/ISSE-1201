@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التوجيه إلى مخطط الدورة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            direction: rtl;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>جاري التوجيه إلى مخطط الدورة</h1>
+    <div class="spinner"></div>
+    <p>إذا لم يتم التوجيه تلقائياً، <a href="course_outline.html">انقر هنا</a></p>
+    
+    <script>
+        // التوجيه بعد 2 ثانية
+        setTimeout(function() {
+            window.location.href = 'course_outline.html';
+        }, 2000);
+    </script>
+</body>
+</html>
