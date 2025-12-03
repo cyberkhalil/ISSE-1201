@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Introduction to Computer Systems | UCAS Cybersecurity</title>
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --light-blue: #e8f0fe;
+            --dark-blue: #0d47a1;
+            --accent-blue: #8ab4f8;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+            min-height: 100vh;
+            font-size: 20px;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 35px;
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 45px 40px;
+            border-radius: 18px;
+            margin-bottom: 35px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(26, 115, 232, 0.2);
+        }
+        
+        .course-header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+        
+        .course-header h2 {
+            font-size: 2.1rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        .session-info {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.4rem;
+            margin-top: 15px;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+        
+        .lecture-structure {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            margin: 35px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .topic-block {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .topic-number {
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            min-width: 60px;
+            height: 60px;
+            text-align: center;
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .topic-details {
+            flex: 1;
+        }
+        
+        .topic-details h4 {
+            font-size: 1.6rem;
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 45px 40px;
+            border-radius: 18px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid var(--primary-blue);
+        }
+        
+        .section-title {
+            color: var(--dark-blue);
+            font-size: 2.2rem;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--light-blue);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 45px;
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+        
+        .key-concept {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .key-concept h4 {
+            color: var(--dark-blue);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .key-concept h4::before {
+            content: "💡";
+            font-size: 1.6rem;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin: 35px 0;
+        }
+        
+        .comparison-column {
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 15px;
+            border-top: 5px solid var(--secondary-blue);
+        }
+        
+        .comparison-column h4 {
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .comparison-column h4::before {
+            content: "⚙️";
+            font-size: 1.5rem;
+        }
+        
+        .cyber-connection {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 35px;
+            border: 2px solid #ffc107;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-connection::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: #ffc107;
+        }
+        
+        .cyber-connection h4 {
+            color: #856404;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .cyber-connection h4::before {
+            content: "🔒";
+            font-size: 1.6rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            margin-bottom: 18px;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.9;
+            font-size: 1.15rem;
+        }
+        
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .definition-box {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .definition-box strong {
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        
+        .computer-system-definition {
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+            padding: 35px;
+            border-radius: 15px;
+            margin: 35px 0;
+            border-left: 6px solid #34a853;
+        }
+        
+        .computer-system-definition h4 {
+            color: #0d652d;
+            font-size: 1.9rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .computer-system-definition h4::before {
+            content: "🖥️";
+            font-size: 1.6rem;
+        }
+        
+        .in-class-activity {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            padding: 45px;
+            border-radius: 16px;
+            margin: 40px 0;
+            border-left: 6px solid var(--primary-blue);
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin: 35px 0;
+        }
+        
+        .activity-column {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            border-top: 5px solid var(--secondary-blue);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .activity-column h4 {
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .activity-column h4::before {
+            content: "🔍";
+            font-size: 1.5rem;
+        }
+        
+        .step-list {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .step-list li {
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .step-list li::before {
+            content: "✓";
+            color: #34a853;
+            font-weight: bold;
+        }
+        
+        .journey-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .journey-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .journey-section p {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+        
+        .next-week {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .next-week h4 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-blue);
+            padding: 18px 45px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #e0e0e0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .course-header {
+                padding: 35px 25px;
+            }
+            
+            .course-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .course-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .content-section {
+                padding: 35px 25px;
+            }
+            
+            .section-title {
+                font-size: 1.9rem;
+            }
+            
+            .comparison-grid, .activity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topic-block {
+                flex-direction: column;
+            }
+            
+            .topic-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .journey-section {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="course-header">
+            <h1>Introduction to Computer Systems</h1>
+            <h2>Week 1: Computer Fundamentals & Cybersecurity Foundations</h2>
+            <div class="session-info">Week 1 Lecture Topics | ISSE 1201</div>
+        </header>
+
+        <div class="lecture-structure">
+            <h3 style="color: var(--dark-blue); font-size: 1.8rem; margin-bottom: 25px;">📚 Lecture Topics Structure</h3>
+            
+            <div class="topic-block">
+                <div class="topic-number">1</div>
+                <div class="topic-details">
+                    <h4>Overview & Computer Literacy</h4>
+                    <p>Understanding the role of computers in modern society and workplace. Importance of computer knowledge in today's world. How computers have become integral to daily life and professional environments.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">2</div>
+                <div class="topic-details">
+                    <h4>What is a Computer?</h4>
+                    <p>Electronic device operating under stored instructions that can accept data, process it according to rules, produce results, and store results for future work. Understanding computers as data processing devices.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">3</div>
+                <div class="topic-details">
+                    <h4>What is a Computer System?</h4>
+                    <p>Understanding the complete system: Hardware, Software, and Users working together. The interconnected nature of system components and their collaborative functions.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">4</div>
+                <div class="topic-details">
+                    <h4>Information Processing Life Cycle</h4>
+                    <p>The complete cycle of: Input → Process → Output → Storage. Understanding how data becomes information through processing. The role of instructions and communication in processing cycles.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">5</div>
+                <div class="topic-details">
+                    <h4>Computer Tasks and Capabilities</h4>
+                    <p>What computers can do: Store information, permit searches, perform calculations, control other devices, and provide entertainment. Practical applications of computing technology.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">6</div>
+                <div class="topic-details">
+                    <h4>Hardware Components Deep Dive</h4>
+                    <p>Input devices, Output devices, System unit, Storage devices, Communication devices. Detailed examination of the system unit: Motherboard, CPU, and Memory components.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">7</div>
+                <div class="topic-details">
+                    <h4>Software and User Interaction</h4>
+                    <p>Software as instructions that tell computers what to do. User interfaces and interaction methods. The role of users in computer systems.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">8</div>
+                <div class="topic-details">
+                    <h4>Advantages and Disadvantages of Computers</h4>
+                    <p>Speed, Storage, and Communication advantages. Privacy violations and Health risks as disadvantages. Balanced understanding of computer technology impacts.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">9</div>
+                <div class="topic-details">
+                    <h4>Key Terminologies</h4>
+                    <p>Algorithm, Program, Programming, and Software definitions. Foundational vocabulary for computer science studies.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">10</div>
+                <div class="topic-details">
+                    <h4>Cybersecurity Connections</h4>
+                    <p>How each fundamental concept relates to security considerations. Understanding attack vectors and protection strategies from the ground up.</p>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section class="content-section">
+                <h2 class="section-title">Detailed Lecture Content</h2>
+                
+                <div class="key-concept">
+                    <h4>What is a Computer? - Comprehensive Definition</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Computer:</strong> An electronic device operating under the control of instructions stored in its own memory that can:</p>
+                        <ul>
+                            <li><strong>Accept data</strong> (input)</li>
+                            <li><strong>Process the data</strong> according to specified rules</li>
+                            <li><strong>Produce results</strong> (output)</li>
+                            <li><strong>Store the results</strong> for future work</li>
+                        </ul>
+                    </div>
+                    
+                    <p><strong>Computers as Data Processing Devices:</strong> Perform four major functions:</p>
+                    <ul>
+                        <li><strong>Input:</strong> Gathers data, allows entering data</li>
+                        <li><strong>Process:</strong> Manipulates, calculates, or organizes data</li>
+                        <li><strong>Output:</strong> Displays data and information</li>
+                        <li><strong>Storage:</strong> Saves data and information</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding: 20px; background: rgba(26, 115, 232, 0.1); border-radius: 10px;">
+                        <h5 style="color: var(--dark-blue); margin-bottom: 15px;">Information Processing Life Cycle:</h5>
+                        <ul>
+                            <li><strong>Instruction:</strong> Steps that tell the computer how to perform a particular task</li>
+                            <li><strong>Data Storage:</strong> Computer holds data, information, and instructions in storage for future use</li>
+                            <li><strong>Communication:</strong> Most computers today can communicate with other computers, making communication an essential element of the information processing cycle</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="computer-system-definition">
+                    <h4>What is a Computer System?</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Computer System:</strong> A complete, functioning system consisting of three interconnected components:</p>
+                        <ul>
+                            <li><strong>Hardware:</strong> Electric, electronic, and mechanical components (physical parts)</li>
+                            <li><strong>Software:</strong> A series of instructions that tells the computer what to do and how to do it</li>
+                            <li><strong>Users:</strong> Anyone who uses the hardware and software to perform tasks</li>
+                        </ul>
+                    </div>
+                    
+                    <p><strong>Key Characteristics of a Computer System:</strong></p>
+                    <ul>
+                        <li>All components work together to process information</li>
+                        <li>Hardware provides the physical platform for software execution</li>
+                        <li>Software provides the intelligence and instructions</li>
+                        <li>Users provide purpose, input, and interpret output</li>
+                        <li>Systems can range from simple (personal computer) to complex (enterprise networks)</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding: 20px; background: rgba(52, 168, 83, 0.1); border-radius: 10px;">
+                        <h5 style="color: #0d652d; margin-bottom: 15px;">System Unit Components:</h5>
+                        <ul>
+                            <li><strong>Processor (CPU):</strong> Electronic component that interprets and carries out basic instructions that operate the computer</li>
+                            <li><strong>Memory:</strong> Consists of electronic components that store instructions waiting to be executed and data needed by those instructions</li>
+                            <li><strong>Motherboard:</strong> Main circuit board connecting all components within the system unit</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="key-concept">
+                    <h4>What Computers Can Do - Practical Applications</h4>
+                    
+                    <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                        <ul>
+                            <li><strong>Store Information:</strong> Databases, files, archives</li>
+                            <li><strong>Permit Searches:</strong> Information retrieval, data querying</li>
+                            <li><strong>Calculations:</strong> Mathematical operations, data analysis</li>
+                            <li><strong>Control Other Devices:</strong> Automation systems, IoT devices</li>
+                            <li><strong>Entertainment:</strong> Games, multimedia, virtual reality</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Computer System Components</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-column">
+                        <h4>Hardware Components</h4>
+                        <p><strong>Electric, electronic, and mechanical components:</strong></p>
+                        <ul>
+                            <li><strong>Input Devices:</strong> Hardware used to enter data and instructions (keyboard, mouse, scanner)</li>
+                            <li><strong>Output Devices:</strong> Hardware that conveys information to one or more people (monitor, printer, speakers)</li>
+                            <li><strong>System Unit:</strong> Case containing electronic components for processing data</li>
+                            <li><strong>Storage Devices:</strong> Holds data, instructions, and information for future use (HDD, SSD, USB drives)</li>
+                            <li><strong>Communication Devices:</strong> Enables computer to send/receive data to/from other computers (network cards, modems)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-column">
+                        <h4>Software & User Components</h4>
+                        <p><strong>Software:</strong> Consists of a series of instructions that tells the computer what to do and how to do it</p>
+                        <ul>
+                            <li><strong>User Interface:</strong> How users interact with programs (text, graphics, icons)</li>
+                            <li><strong>Application Software:</strong> Programs for specific tasks (word processors, browsers)</li>
+                            <li><strong>System Software:</strong> Operating systems and utility programs</li>
+                        </ul>
+                        
+                        <div style="margin-top: 25px; padding: 20px; background: #e8f0fe; border-radius: 8px;">
+                            <h5 style="color: var(--dark-blue); margin-bottom: 10px;">Users:</h5>
+                            <ul>
+                                <li><strong>Definition:</strong> Anyone who uses the hardware and software to do some task</li>
+                                <li><strong>Types:</strong> End users, system administrators, developers</li>
+                                <li><strong>Interaction:</strong> Through user interfaces and applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cyber-connection">
+                    <h4>Cybersecurity Perspective on System Components</h4>
+                    <p>Each component represents potential security considerations:</p>
+                    <ul>
+                        <li><strong>Hardware Security:</strong> Physical access control, hardware tampering, supply chain attacks</li>
+                        <li><strong>Software Security:</strong> Code vulnerabilities, patch management, license compliance</li>
+                        <li><strong>Data Security:</strong> Encryption, access controls, backup strategies</li>
+                        <li><strong>User Security:</strong> Authentication, authorization, security awareness training</li>
+                        <li><strong>Communication Security:</strong> Network encryption, secure protocols, firewall configuration</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Advantages, Disadvantages & Terminologies</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-column">
+                        <h4>Advantages of Using Computers</h4>
+                        <ul>
+                            <li><strong>Speed:</strong> Rapid processing of information</li>
+                            <li><strong>Storage:</strong> Large capacity for data retention</li>
+                            <li><strong>Communication:</strong> Efficient information exchange</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-column">
+                        <h4>Disadvantages of Computers</h4>
+                        <ul>
+                            <li><strong>Violation of Privacy:</strong> Data collection and surveillance concerns</li>
+                            <li><strong>Health Risks:</strong> Physical and mental health impacts from prolonged use</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="key-concept" style="margin-top: 35px;">
+                    <h4>Key Terminologies</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Algorithm:</strong> A set of steps that defines how a task is performed</p>
+                    </div>
+                    
+                    <div class="definition-box">
+                        <p><strong>Program:</strong> A representation of an algorithm</p>
+                    </div>
+                    
+                    <div class="definition-box">
+                        <p><strong>Programming:</strong> The process of developing a program</p>
+                    </div>
+                    
+                    <div class="definition-box">
+                        <p><strong>Software:</strong> Programs and algorithms</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="in-class-activity">
+                <h2 class="section-title">🏫 In-Class Practical Activities</h2>
+                
+                <div class="activity-grid">
+                    <div class="activity-column">
+                        <h4>🔍 In-Class Exercise: System Analysis</h4>
+                        <p><strong>Objective:</strong> Examine your own computer or device and understand its components</p>
+                        
+                        <div class="step-list">
+                            <ul>
+                                <li><strong>Identify the hardware components you can see:</strong> Monitor, keyboard, mouse, system unit, speakers, etc.</li>
+                                <li><strong>Check your system specifications:</strong> Find your CPU type, RAM size, and storage capacity</li>
+                                <li><strong>List the software applications installed:</strong> Identify at least 5 main applications you use regularly</li>
+                                <li><strong>Determine your operating system version:</strong> Check which OS you're running and its version</li>
+                            </ul>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-style: italic; color: var(--text-light);">
+                            <strong>Note:</strong> You can use system tools like "System Information" on Windows, "About This Mac" on macOS, or system settings on mobile devices.
+                        </p>
+                    </div>
+                    
+                    <div class="activity-column">
+                        <h4>🔍 In-Class Exercise: Component Classification</h4>
+                        <p><strong>Objective:</strong> Classify different computer components based on their function</p>
+                        
+                        <div class="step-list">
+                            <ul>
+                                <li>Classify devices as Input, Output, Storage, or Processing components</li>
+                                <li>Identify which components are part of the system unit</li>
+                                <li>Differentiate between hardware and software components</li>
+                                <li>Trace how data flows through a complete computer system</li>
+                                <li>Discuss security implications for each component type</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 25px; padding: 20px; background: #e8f0fe; border-radius: 10px;">
+                            <h5 style="color: var(--dark-blue); margin-bottom: 10px;">📝 Activity Notes:</h5>
+                            <p>Work in pairs or small groups. Document your findings and be prepared to share with the class. Focus on understanding how all components work together as a system.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="journey-section">
+                <h3>Ready to Begin Your Journey?</h3>
+                <p>This week sets the foundation for everything you'll learn in cybersecurity engineering. Each concept we cover will build toward understanding how to protect computer systems from threats.</p>
+                <p>Understanding computer fundamentals is not just about technology - it's about developing the mindset needed to identify vulnerabilities, understand attack vectors, and implement effective security measures.</p>
+                
+                <div class="next-week">
+                    <h4>📅 Next Week Preview:</h4>
+                    <p><strong>Data Representation</strong> - How computers store and process information in binary format. We'll explore binary, hexadecimal, ASCII, Unicode, and how different types of data (text, images, audio) are represented in computer systems.</p>
+                </div>
+                
+                <a href="#" class="button">Access Week 2 Complete Materials</a>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>University College of Applied Sciences | Cybersecurity Engineering Program</p>
+            <p>© 2025 Introduction to Computer Systems (ISSE 1201) | Week 1 Complete Lecture Content</p>
+            <p style="margin-top: 15px; font-size: 1rem;">
+                Instructor: Eng. Mahmoud Khalil | Email: makhalil@ucas.edu.ps
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
