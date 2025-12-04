@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2: Data Representation in Computer Systems | UCAS Cybersecurity</title>
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --light-blue: #e8f0fe;
+            --dark-blue: #0d47a1;
+            --accent-blue: #8ab4f8;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+            --green-accent: #34a853;
+            --orange-accent: #ff9800;
+            --purple-accent: #9c27b0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+            min-height: 100vh;
+            font-size: 18px;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 35px;
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 40px 35px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(26, 115, 232, 0.2);
+        }
+        
+        .course-header h1 {
+            font-size: 2.6rem;
+            font-weight: 300;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        
+        .course-header h2 {
+            font-size: 1.9rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 18px;
+        }
+        
+        .session-info {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin-top: 12px;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+        
+        .lecture-structure {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .topic-block {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .topic-number {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            min-width: 55px;
+            height: 55px;
+            text-align: center;
+            margin-right: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .topic-details {
+            flex: 1;
+        }
+        
+        .topic-details h4 {
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+        
+        .topic-details p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 18px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid var(--primary-blue);
+        }
+        
+        .section-title {
+            color: var(--dark-blue);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 18px;
+            border-bottom: 3px solid var(--light-blue);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 42px;
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+        
+        .key-concept {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .key-concept h4 {
+            color: var(--dark-blue);
+            font-size: 1.6rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .key-concept h4::before {
+            content: "💡";
+            font-size: 1.5rem;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .comparison-column {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid var(--secondary-blue);
+        }
+        
+        .comparison-column h4 {
+            color: var(--dark-blue);
+            margin-bottom: 22px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .comparison-column h4::before {
+            content: "⚙️";
+            font-size: 1.4rem;
+        }
+        
+        .cyber-connection {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid #ffc107;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-connection::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: #ffc107;
+        }
+        
+        .cyber-connection h4 {
+            color: #856404;
+            font-size: 1.6rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .cyber-connection h4::before {
+            content: "🔒";
+            font-size: 1.5rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            margin-bottom: 16px;
+            padding-left: 36px;
+            position: relative;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .definition-box {
+            background: #f0f7ff;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 18px 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .definition-box strong {
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        
+        .binary-example {
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 6px solid var(--green-accent);
+        }
+        
+        .binary-example h4 {
+            color: #0d652d;
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .binary-example h4::before {
+            content: "🔢";
+            font-size: 1.5rem;
+        }
+        
+        .in-class-activity {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 35px 0;
+            border-left: 6px solid var(--primary-blue);
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .activity-column {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid var(--secondary-blue);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .activity-column h4 {
+            color: var(--dark-blue);
+            margin-bottom: 22px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .activity-column h4::before {
+            content: "🔍";
+            font-size: 1.4rem;
+        }
+        
+        .step-list {
+            background: #f8f9fa;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 18px 0;
+        }
+        
+        .step-list li {
+            padding-left: 28px;
+            margin-bottom: 14px;
+        }
+        
+        .step-list li::before {
+            content: "✓";
+            color: var(--green-accent);
+            font-weight: bold;
+        }
+        
+        .journey-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 18px;
+            text-align: center;
+            margin-top: 45px;
+        }
+        
+        .journey-section h3 {
+            font-size: 2rem;
+            margin-bottom: 22px;
+            font-weight: 300;
+        }
+        
+        .journey-section p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            opacity: 0.95;
+        }
+        
+        .next-week {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 22px;
+            border-radius: 12px;
+            margin-top: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .next-week h4 {
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+        
+        .next-week p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-blue);
+            padding: 16px 40px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 28px;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 55px;
+            padding-top: 35px;
+            border-top: 2px solid #e0e0e0;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .code-block {
+            background: #263238;
+            color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 22px 0;
+            overflow-x: auto;
+        }
+        
+        .code-comment {
+            color: #9e9e9e;
+        }
+        
+        .code-keyword {
+            color: #ff9800;
+        }
+        
+        .code-string {
+            color: #4caf50;
+        }
+        
+        .number-system-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1.05rem;
+        }
+        
+        .number-system-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .number-system-table td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .number-system-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .truth-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.05rem;
+        }
+        
+        .truth-table th, .truth-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .truth-table th {
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        
+        .truth-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .memory-diagram {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--purple-accent);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .memory-address {
+            color: var(--purple-accent);
+            font-weight: bold;
+        }
+        
+        .memory-cell {
+            color: var(--dark-blue);
+            font-weight: bold;
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .note-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--green-accent);
+        }
+        
+        .note-box h5 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .course-header {
+                padding: 30px 22px;
+            }
+            
+            .course-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .course-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .content-section {
+                padding: 30px 22px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .comparison-grid, .activity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topic-block {
+                flex-direction: column;
+            }
+            
+            .topic-number {
+                margin-right: 0;
+                margin-bottom: 14px;
+            }
+            
+            .journey-section {
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="course-header">
+            <h1>Data Representation in Computer Systems</h1>
+            <h2>Week 2: Binary Systems, Data Encoding & Cybersecurity Applications</h2>
+            <div class="session-info">Week 2 Lecture Topics | ISSE 1201</div>
+        </header>
+
+        <div class="lecture-structure">
+            <h3 style="color: var(--dark-blue); font-size: 1.6rem; margin-bottom: 22px;">📚 Lecture Topics Structure</h3>
+            
+            <div class="topic-block">
+                <div class="topic-number">1</div>
+                <div class="topic-details">
+                    <h4>Bits and Data Storage</h4>
+                    <p>Understanding how information is encoded as patterns of 0s and 1s inside computers. Bits represent numeric values, characters, images, and sounds.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">2</div>
+                <div class="topic-details">
+                    <h4>Boolean Operations and Logic Gates</h4>
+                    <p>Boolean operations (AND, OR, XOR, NOT) and their implementation as logic gates. Gates as building blocks of computer circuits.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">3</div>
+                <div class="topic-details">
+                    <h4>Main Memory Organization</h4>
+                    <p>Memory cells, addressing, and organization. RAM structure and memory capacity measurements (KB, MB, GB, TB, PB).</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">4</div>
+                <div class="topic-details">
+                    <h4>Number Systems</h4>
+                    <p>Binary, Decimal, Hexadecimal, and Octal systems. Conversion between different bases and their applications in computing.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">5</div>
+                <div class="topic-details">
+                    <h4>Data Representation Methods</h4>
+                    <p>How different types of data are represented: text (ASCII, Unicode), numbers (integers, fractions), images (pixels, bitmaps), and sounds (sampling).</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">6</div>
+                <div class="topic-details">
+                    <h4>Integer Representation</h4>
+                    <p>Two's complement notation for signed integers. Overflow problem and excess notation systems.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">7</div>
+                <div class="topic-details">
+                    <h4>Mass Storage Systems</h4>
+                    <p>Magnetic systems (disks, tapes), optical systems (CDs, DVDs), and flash drives. Performance evaluation criteria.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">8</div>
+                <div class="topic-details">
+                    <h4>Binary Arithmetic</h4>
+                    <p>Binary addition, subtraction, and handling of fractions in binary representation.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">9</div>
+                <div class="topic-details">
+                    <h4>Practical Tools & Commands</h4>
+                    <p>Using PowerShell and command-line tools to work with data representation. Practical exercises for data conversion and analysis.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">10</div>
+                <div class="topic-details">
+                    <h4>Cybersecurity Applications</h4>
+                    <p>How data representation relates to encryption, forensics, malware analysis, and security protocols. Binary analysis in cybersecurity investigations.</p>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section class="content-section">
+                <h2 class="section-title">Bits, Boolean Operations & Logic Gates</h2>
+                
+                <div class="key-concept">
+                    <h4>Bits - The Fundamental Unit</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Bit (Binary Digit):</strong> The smallest unit of data in a computer, represented as either 0 or 1. All information inside computers is encoded as patterns of bits.</p>
+                    </div>
+                    
+                    <p><strong>Bits represent:</strong></p>
+                    <ul>
+                        <li><strong>Numeric values:</strong> Binary numbers</li>
+                        <li><strong>Characters:</strong> Text through encoding standards like ASCII</li>
+                        <li><strong>Images:</strong> As collections of pixels</li>
+                        <li><strong>Sounds:</strong> Through sampling of audio waves</li>
+                    </ul>
+                </div>
+                
+                <div class="key-concept">
+                    <h4>Boolean Operations</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Boolean Operation:</strong> An operation that manipulates true/false values, where bit 0 represents false and bit 1 represents true.</p>
+                    </div>
+                    
+                    <p><strong>Basic Boolean Operations:</strong></p>
+                    
+                    <table class="truth-table">
+                        <thead>
+                            <tr>
+                                <th>Operation</th>
+                                <th>Symbol</th>
+                                <th>Description</th>
+                                <th>Cybersecurity Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AND</strong></td>
+                                <td>∧</td>
+                                <td>Returns true only if both inputs are true</td>
+                                <td>Access control logic, permission checks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OR</strong></td>
+                                <td>∨</td>
+                                <td>Returns true if at least one input is true</td>
+                                <td>Multiple authentication methods</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XOR</strong></td>
+                                <td>⊕</td>
+                                <td>Returns true if inputs are different</td>
+                                <td>Encryption algorithms, error detection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NOT</strong></td>
+                                <td>¬</td>
+                                <td>Returns the opposite of the input</td>
+                                <td>Complement operations in cryptography</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note-box">
+                        <h5>Truth Tables for Basic Gates:</h5>
+                        <p><strong>AND Gate:</strong> 0 AND 0 = 0, 0 AND 1 = 0, 1 AND 0 = 0, 1 AND 1 = 1</p>
+                        <p><strong>OR Gate:</strong> 0 OR 0 = 0, 0 OR 1 = 1, 1 OR 0 = 1, 1 OR 1 = 1</p>
+                        <p><strong>XOR Gate:</strong> 0 XOR 0 = 0, 0 XOR 1 = 1, 1 XOR 0 = 1, 1 XOR 1 = 0</p>
+                        <p><strong>NOT Gate:</strong> NOT 0 = 1, NOT 1 = 0</p>
+                    </div>
+                </div>
+                
+                <div class="binary-example">
+                    <h4>Logic Gates - Building Blocks of Computers</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Gate:</strong> A device that produces the output of a Boolean operation. Often implemented as small electronic circuits where 0 and 1 are represented as voltage levels.</p>
+                    </div>
+                    
+                    <p><strong>How Gates Work:</strong></p>
+                    <ul>
+                        <li>AND, OR, and XOR gates take <span class="highlight">two input bits</span></li>
+                        <li>NOT gate takes <span class="highlight">one input bit</span></li>
+                        <li>Output is determined by the Boolean operation</li>
+                        <li>Gates are combined to build complex circuits (adders, memory cells, processors)</li>
+                    </ul>
+                    
+                    <div class="cyber-connection">
+                        <h4>Cybersecurity Perspective: Gate-Level Attacks</h4>
+                        <p>Understanding logic gates is crucial for:</p>
+                        <ul>
+                            <li><strong>Side-channel attacks:</strong> Analyzing power consumption or electromagnetic emissions from gates</li>
+                            <li><strong>Hardware security:</strong> Designing secure cryptographic circuits</li>
+                            <li><strong>Fault injection attacks:</strong> Manipulating gate behavior through voltage or clock glitches</li>
+                            <li><strong>Reverse engineering:</strong> Understanding proprietary hardware for security analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Memory Organization & Storage</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-column">
+                        <h4>Main Memory (RAM)</h4>
+                        <p><strong>Random Access Memory:</strong> Volatile memory for storing data and programs during execution.</p>
+                        <ul>
+                            <li><strong>Cell:</strong> Basic unit of memory (typically 8 bits = 1 byte)</li>
+                            <li><strong>Address:</strong> Unique identifier for each memory cell</li>
+                            <li><strong>Organization:</strong> Cells organized in addressable locations</li>
+                        </ul>
+                        
+                        <div class="memory-diagram">
+                            <div>Address 0: <span class="memory-cell">01011010</span></div>
+                            <div>Address 1: <span class="memory-cell">10100101</span></div>
+                            <div>Address 2: <span class="memory-cell">11110000</span></div>
+                            <div>Address 3: <span class="memory-cell">00001111</span></div>
+                            <div>... <span style="color: var(--text-light)">(millions/billions of addresses)</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-column">
+                        <h4>Memory Capacity Measurements</h4>
+                        
+                        <div class="definition-box">
+                            <p><strong>Note:</strong> Computer memory uses binary prefixes where 1 KB = 1024 bytes (2¹⁰), not 1000 bytes.</p>
+                        </div>
+                        
+                        <ul>
+                            <li><strong>Kilobyte (KB):</strong> 1024 bytes</li>
+                            <li><strong>Megabyte (MB):</strong> 1024 KB = 1,048,576 bytes</li>
+                            <li><strong>Gigabyte (GB):</strong> 1024 MB = 1,073,741,824 bytes</li>
+                            <li><strong>Terabyte (TB):</strong> 1024 GB = 1,099,511,627,776 bytes</li>
+                            <li><strong>Petabyte (PB):</strong> 1024 TB = 1,125,899,906,842,624 bytes</li>
+                        </ul>
+                        
+                        <div style="margin-top: 22px; padding: 18px; background: #e8f0fe; border-radius: 8px;">
+                            <h5 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.2rem;">Memory Terminology:</h5>
+                            <ul>
+                                <li><strong>Most Significant Bit (MSB):</strong> Leftmost bit in a byte</li>
+                                <li><strong>Least Significant Bit (LSB):</strong> Rightmost bit in a byte</li>
+                                <li><strong>Higher-order end:</strong> Left end of bit sequence</li>
+                                <li><strong>Lower-order end:</strong> Right end of bit sequence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-concept">
+                    <h4>Mass Storage Systems</h4>
+                    
+                    <p><strong>Why Mass Storage?</strong> Main memory is volatile and limited in size, so computers need additional storage.</p>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-column">
+                            <h4>Advantages</h4>
+                            <ul>
+                                <li>Less volatility (data persists without power)</li>
+                                <li>Large storage capacity</li>
+                                <li>Lower cost per byte</li>
+                                <li>Removable media for archiving</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>Disadvantages</h4>
+                            <ul>
+                                <li>Slower access (mechanical motion)</li>
+                                <li>Higher latency</li>
+                                <li>Physical wear and tear</li>
+                                <li>Susceptible to physical damage</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 22px; padding: 18px; background: #f0f7ff; border-radius: 10px;">
+                        <h5 style="color: var(--dark-blue); margin-bottom: 14px; font-size: 1.3rem;">Types of Mass Storage:</h5>
+                        <ul>
+                            <li><strong>Magnetic Systems:</strong> Hard disks, tapes (tracks and sectors)</li>
+                            <li><strong>Optical Systems:</strong> CDs, DVDs, Blu-ray (pits and lands)</li>
+                            <li><strong>Flash Memory:</strong> SSDs, USB drives, memory cards (electronic storage)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cyber-connection">
+                    <h4>Cybersecurity: Storage Forensics & Data Recovery</h4>
+                    <p>Understanding storage systems is essential for:</p>
+                    <ul>
+                        <li><strong>Digital forensics:</strong> Recovering deleted files from disk sectors</li>
+                        <li><strong>Data recovery:</strong> Understanding file systems and storage layouts</li>
+                        <li><strong>Secure deletion:</strong> Knowing how data persists on different media</li>
+                        <li><strong>Storage encryption:</strong> Implementing full-disk encryption</li>
+                        <li><strong>Anti-forensics:</strong> Techniques to hide or destroy digital evidence</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Number Systems & Data Representation</h2>
+                
+                <div class="binary-example">
+                    <h4>Number Systems Comparison</h4>
+                    
+                    <table class="number-system-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Base</th>
+                                <th>Digits</th>
+                                <th>Example</th>
+                                <th>Bits per Digit</th>
+                                <th>Primary Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Binary</strong></td>
+                                <td>2</td>
+                                <td>0, 1</td>
+                                <td>1101</td>
+                                <td>1</td>
+                                <td>Computer internal operations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Decimal</strong></td>
+                                <td>10</td>
+                                <td>0-9</td>
+                                <td>42</td>
+                                <td>~3.32</td>
+                                <td>Human counting</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Octal</strong></td>
+                                <td>8</td>
+                                <td>0-7</td>
+                                <td>52</td>
+                                <td>3</td>
+                                <td>UNIX permissions, historical systems</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hexadecimal</strong></td>
+                                <td>16</td>
+                                <td>0-9, A-F</td>
+                                <td>2A</td>
+                                <td>4</td>
+                                <td>Memory addresses, color codes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note-box">
+                        <h5>Key Conversion Relationships:</h5>
+                        <p>• 1 Hexadecimal digit = 4 Binary digits (bits)</p>
+                        <p>• 1 Octal digit = 3 Binary digits (bits)</p>
+                        <p>• 3 Octal digits = 1 Byte (8 bits, with 1 bit unused)</p>
+                        <p>• 2 Hexadecimal digits = 1 Byte (8 bits)</p>
+                    </div>
+                </div>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-column">
+                        <h4>Text Representation</h4>
+                        
+                        <p><strong>Character Encoding Standards:</strong></p>
+                        <ul>
+                            <li><strong>ASCII (7-bit):</strong> 128 characters, English text</li>
+                            <li><strong>Extended ASCII (8-bit):</strong> 256 characters, includes symbols</li>
+                            <li><strong>Unicode (UTF-8, UTF-16):</strong> Supports all languages
+                                <ul>
+                                    <li>UTF-8: Variable length (1-4 bytes), backward compatible with ASCII</li>
+                                    <li>UTF-16: Fixed 2 or 4 bytes per character</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <span class="code-comment"># "Hello." in ASCII (hex values)</span><br>
+                            <span class="code-string">H</span>: 48 <span class="code-string">e</span>: 65 <span class="code-string">l</span>: 6C <span class="code-string">l</span>: 6C <span class="code-string">o</span>: 6F <span class="code-string">.</span>: 2E<br>
+                            <span class="code-comment"># Binary: 01001000 01100101 01101100 01101100 01101111 00101110</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-column">
+                        <h4>Image & Sound Representation</h4>
+                        
+                        <p><strong>Images:</strong></p>
+                        <ul>
+                            <li><strong>Pixel (Picture Element):</strong> Smallest unit of an image</li>
+                            <li><strong>Bitmap:</strong> Collection of encoded pixels</li>
+                            <li><strong>Black & White:</strong> 1 bit per pixel (0=black, 1=white)</li>
+                            <li><strong>Color (RGB):</strong> 3 bytes per pixel (1 byte each for Red, Green, Blue)</li>
+                        </ul>
+                        
+                        <p><strong>Sounds:</strong></p>
+                        <ul>
+                            <li><strong>Sampling:</strong> Measuring amplitude at regular intervals</li>
+                            <li><strong>Sample rate:</strong> How often amplitude is measured (Hz)</li>
+                            <li><strong>Bit depth:</strong> Number of bits per sample</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="key-concept">
+                    <h4>Integer Representation: Two's Complement</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Two's Complement:</strong> The most common method for representing signed integers in computers. Negative numbers are represented as the two's complement of their absolute value.</p>
+                    </div>
+                    
+                    <p><strong>Key Features:</strong></p>
+                    <ul>
+                        <li>Leftmost bit represents sign (0 = positive, 1 = negative)</li>
+                        <li>Range for n bits: -2ⁿ⁻¹ to 2ⁿ⁻¹ - 1</li>
+                        <li>Single representation for zero</li>
+                        <li>Simple addition/subtraction circuits</li>
+                    </ul>
+                    
+                    <table class="truth-table">
+                        <thead>
+                            <tr>
+                                <th>Decimal</th>
+                                <th>4-bit Two's Complement</th>
+                                <th>Calculation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>+7</td>
+                                <td>0111</td>
+                                <td>Largest positive</td>
+                            </tr>
+                            <tr>
+                                <td>+1</td>
+                                <td>0001</td>
+                                <td>1 in binary</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0000</td>
+                                <td>Zero</td>
+                            </tr>
+                            <tr>
+                                <td>-1</td>
+                                <td>1111</td>
+                                <td>Invert bits of 1 and add 1</td>
+                            </tr>
+                            <tr>
+                                <td>-8</td>
+                                <td>1000</td>
+                                <td>Smallest negative</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note-box">
+                        <h5>Overflow Problem:</h5>
+                        <p>When using 4-bit two's complement, the range is -8 to +7. Adding 5 + 4 = 9, which is outside this range, causes overflow. The result 0101 + 0100 = 1001, which is -7 in two's complement, not 9.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="in-class-activity">
+                <h2 class="section-title">🏫 In-Class Practical Activities</h2>
+                
+                <div class="activity-grid">
+                    <div class="activity-column">
+                        <h4>🔍 Activity 1: Number System Conversions</h4>
+                        <p><strong>Objective:</strong> Practice converting between different number systems</p>
+                        
+                        <div class="step-list">
+                            <ul>
+                                <li>Convert decimal 42 to binary, octal, and hexadecimal</li>
+                                <li>Convert binary 11011010 to decimal, octal, and hexadecimal</li>
+                                <li>Convert hexadecimal 2A to decimal, binary, and octal</li>
+                                <li>Convert octal 75 to decimal, binary, and hexadecimal</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-comment"># PowerShell conversion examples</span><br>
+                            <span class="code-string">[Convert]::ToString(42, 2)</span> <span class="code-comment"># Decimal to binary</span><br>
+                            <span class="code-string">[Convert]::ToString(42, 8)</span> <span class="code-comment"># Decimal to octal</span><br>
+                            <span class="code-string">[Convert]::ToString(42, 16)</span> <span class="code-comment"># Decimal to hex</span><br>
+                            <span class="code-string">[Convert]::ToInt32("11011010", 2)</span> <span class="code-comment"># Binary to decimal</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-column">
+                        <h4>🔍 Activity 2: Boolean Logic & Gate Analysis</h4>
+                        <p><strong>Objective:</strong> Analyze logic circuits and create truth tables</p>
+                        
+                        <div class="step-list">
+                            <ul>
+                                <li>Create truth tables for AND, OR, XOR, NAND, and NOR gates</li>
+                                <li>Analyze the circuit: NOT(AND(OR(A,B), C))</li>
+                                <li>Determine input patterns that produce output 1 for given circuits</li>
+                                <li>Design a circuit that outputs 1 only when exactly two inputs are 1</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 22px; padding: 18px; background: #e8f0fe; border-radius: 10px;">
+                            <h5 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.2rem;">Gate Circuit Analysis:</h5>
+                            <p>For the circuit: Input → NOT → AND → Output, with another input going directly to AND. What inputs produce output 1?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity-column" style="margin-top: 30px;">
+                    <h4>🔍 Activity 3: Data Representation Exercises</h4>
+                    <p><strong>Objective:</strong> Work with different data representation methods</p>
+                    
+                    <div class="step-list">
+                        <ul>
+                            <li>Convert the text "CYBER" to ASCII binary representation</li>
+                            <li>Calculate storage needed for a 1920×1080 color image (24-bit RGB)</li>
+                            <li>Represent decimal -15 in 8-bit two's complement</li>
+                            <li>Convert 0.625 (decimal) to binary fraction</li>
+                            <li>Calculate the range of integers representable with 16-bit two's complement</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-block">
+                        <span class="code-comment"># Converting text to ASCII values in PowerShell</span><br>
+                        <span class="code-string">[System.Text.Encoding]::ASCII.GetBytes("CYBER")</span><br>
+                        <span class="code-comment"># Returns: 67 89 66 69 82</span><br><br>
+                        
+                        <span class="code-comment"># Converting decimal fraction to binary manually:</span><br>
+                        <span class="code-comment"># 0.625 × 2 = 1.25 → 1 (MSB)</span><br>
+                        <span class="code-comment"># 0.25 × 2 = 0.5 → 0</span><br>
+                        <span class="code-comment"># 0.5 × 2 = 1.0 → 1 (LSB)</span><br>
+                        <span class="code-comment"># Result: 0.101 binary</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="journey-section">
+                <h3>From Bits to Security: Building Your Foundation</h3>
+                <p>Understanding how data is represented at the binary level is not just academic knowledge - it's the foundation of cybersecurity. Every encryption algorithm, every forensic analysis, and every security protocol operates on these fundamental principles.</p>
+                <p>As cybersecurity engineers, you need to understand systems at their most basic level to effectively protect them, analyze attacks, and design secure solutions.</p>
+                
+                <div class="next-week">
+                    <h4>📅 Next Week Preview:</h4>
+                    <p><strong>Computer Architecture & Processing</strong> - We'll explore how computers process data at the hardware level. Topics include CPU architecture, memory hierarchy, instruction execution, and how processing relates to system performance and security vulnerabilities like buffer overflows and side-channel attacks.</p>
+                </div>
+                
+                <a href="./Lecture3.html" class="button">Access Week 3 Complete Materials</a>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>University College of Applied Sciences | Cybersecurity Engineering Program</p>
+            <p>© 2025 Introduction to Computer Systems (ISSE 1201) | Week 2 Complete Lecture Content</p>
+            <p style="margin-top: 15px; font-size: 0.95rem;">
+                Instructor: Eng. Mahmoud Khalil | Email: makhalil@ucas.edu.ps
+            </p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">
+                Based on course materials from Mr. Nael Aburas, Engineering Department, UCAS (2020)
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

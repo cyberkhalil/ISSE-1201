@@ -23,11 +23,11 @@
         
         body {
             font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.8;
+            line-height: 1.7;
             color: var(--text-dark);
             background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
             min-height: 100vh;
-            font-size: 20px;
+            font-size: 18px;
         }
         
         .container {
@@ -39,65 +39,65 @@
         .course-header {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
             color: white;
-            padding: 45px 40px;
+            padding: 40px 35px;
             border-radius: 18px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             text-align: center;
             box-shadow: 0 5px 25px rgba(26, 115, 232, 0.2);
         }
         
         .course-header h1 {
-            font-size: 3rem;
+            font-size: 2.6rem;
             font-weight: 300;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             letter-spacing: -0.5px;
         }
         
         .course-header h2 {
-            font-size: 2.1rem;
+            font-size: 1.9rem;
             font-weight: 300;
             opacity: 0.95;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         
         .session-info {
             display: inline-block;
             background: rgba(255, 255, 255, 0.25);
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 30px;
-            font-size: 1.4rem;
-            margin-top: 15px;
+            font-size: 1.2rem;
+            margin-top: 12px;
             backdrop-filter: blur(10px);
             font-weight: 500;
         }
         
         .lecture-structure {
             background: white;
-            padding: 35px;
+            padding: 30px;
             border-radius: 16px;
-            margin: 35px 0;
+            margin: 30px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
         
         .topic-block {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 25px;
-            padding-bottom: 25px;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
             border-bottom: 1px solid #e0e0e0;
         }
         
         .topic-number {
             background: var(--primary-blue);
             color: white;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 25px;
             font-weight: 600;
-            font-size: 1.3rem;
-            min-width: 60px;
-            height: 60px;
+            font-size: 1.2rem;
+            min-width: 55px;
+            height: 55px;
             text-align: center;
-            margin-right: 25px;
+            margin-right: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -108,95 +108,100 @@
         }
         
         .topic-details h4 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--dark-blue);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .topic-details p {
+            font-size: 1.05rem;
+            line-height: 1.6;
         }
         
         .content-section {
             background: white;
-            padding: 45px 40px;
+            padding: 40px 35px;
             border-radius: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             border-left: 6px solid var(--primary-blue);
         }
         
         .section-title {
             color: var(--dark-blue);
-            font-size: 2.2rem;
-            margin-bottom: 35px;
-            padding-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 18px;
             border-bottom: 3px solid var(--light-blue);
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
         }
         
         .section-title::before {
             content: "";
             display: inline-block;
             width: 10px;
-            height: 45px;
+            height: 42px;
             background: var(--primary-blue);
             border-radius: 5px;
         }
         
         .key-concept {
             background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
-            padding: 35px;
+            padding: 30px;
             border-radius: 15px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             border: 2px solid var(--accent-blue);
         }
         
         .key-concept h4 {
             color: var(--dark-blue);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+            font-size: 1.6rem;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
         
         .key-concept h4::before {
             content: "💡";
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
         
         .comparison-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
-            margin: 35px 0;
+            gap: 30px;
+            margin: 30px 0;
         }
         
         .comparison-column {
             background: #f8f9fa;
-            padding: 35px;
+            padding: 30px;
             border-radius: 15px;
             border-top: 5px solid var(--secondary-blue);
         }
         
         .comparison-column h4 {
             color: var(--dark-blue);
-            margin-bottom: 25px;
-            font-size: 1.7rem;
+            margin-bottom: 22px;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
         
         .comparison-column h4::before {
             content: "⚙️";
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
         
         .cyber-connection {
             background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
-            padding: 35px;
+            padding: 30px;
             border-radius: 15px;
-            margin-top: 35px;
+            margin-top: 30px;
             border: 2px solid #ffc107;
             position: relative;
             overflow: hidden;
@@ -214,16 +219,16 @@
         
         .cyber-connection h4 {
             color: #856404;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+            font-size: 1.6rem;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
         
         .cyber-connection h4::before {
             content: "🔒";
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
         
         ul {
@@ -232,11 +237,11 @@
         }
         
         li {
-            margin-bottom: 18px;
-            padding-left: 40px;
+            margin-bottom: 16px;
+            padding-left: 36px;
             position: relative;
-            line-height: 1.9;
-            font-size: 1.15rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
         
         li::before {
@@ -245,14 +250,14 @@
             left: 0;
             color: var(--primary-blue);
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
         
         .definition-box {
             background: #f0f7ff;
-            padding: 25px;
+            padding: 22px;
             border-radius: 10px;
-            margin: 20px 0;
+            margin: 18px 0;
             border-left: 4px solid var(--primary-blue);
         }
         
@@ -263,44 +268,44 @@
         
         .computer-system-definition {
             background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
-            padding: 35px;
+            padding: 30px;
             border-radius: 15px;
-            margin: 35px 0;
+            margin: 30px 0;
             border-left: 6px solid #34a853;
         }
         
         .computer-system-definition h4 {
             color: #0d652d;
-            font-size: 1.9rem;
-            margin-bottom: 25px;
+            font-size: 1.7rem;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
         
         .computer-system-definition h4::before {
             content: "🖥️";
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
         
         .in-class-activity {
             background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
-            padding: 45px;
+            padding: 40px;
             border-radius: 16px;
-            margin: 40px 0;
+            margin: 35px 0;
             border-left: 6px solid var(--primary-blue);
         }
         
         .activity-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
-            margin: 35px 0;
+            gap: 30px;
+            margin: 30px 0;
         }
         
         .activity-column {
             background: white;
-            padding: 35px;
+            padding: 30px;
             border-radius: 15px;
             border-top: 5px solid var(--secondary-blue);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -308,28 +313,28 @@
         
         .activity-column h4 {
             color: var(--dark-blue);
-            margin-bottom: 25px;
-            font-size: 1.7rem;
+            margin-bottom: 22px;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
         
         .activity-column h4::before {
             content: "🔍";
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
         
         .step-list {
             background: #f8f9fa;
-            padding: 25px;
+            padding: 22px;
             border-radius: 10px;
-            margin: 20px 0;
+            margin: 18px 0;
         }
         
         .step-list li {
-            padding-left: 30px;
-            margin-bottom: 15px;
+            padding-left: 28px;
+            margin-bottom: 14px;
         }
         
         .step-list li::before {
@@ -341,49 +346,54 @@
         .journey-section {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: white;
-            padding: 50px;
-            border-radius: 20px;
+            padding: 45px;
+            border-radius: 18px;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 45px;
         }
         
         .journey-section h3 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
+            font-size: 2rem;
+            margin-bottom: 22px;
             font-weight: 300;
         }
         
         .journey-section p {
-            font-size: 1.3rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
             opacity: 0.95;
         }
         
         .next-week {
             background: rgba(255, 255, 255, 0.15);
-            padding: 25px;
+            padding: 22px;
             border-radius: 12px;
-            margin-top: 30px;
+            margin-top: 28px;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .next-week h4 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 14px;
             font-weight: 500;
+        }
+        
+        .next-week p {
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
         
         .button {
             display: inline-block;
             background: white;
             color: var(--primary-blue);
-            padding: 18px 45px;
+            padding: 16px 40px;
             border-radius: 35px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.3rem;
-            margin-top: 30px;
+            font-size: 1.2rem;
+            margin-top: 28px;
             transition: all 0.3s ease;
             border: 3px solid transparent;
         }
@@ -398,11 +408,11 @@
         
         .footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 40px;
+            margin-top: 55px;
+            padding-top: 35px;
             border-top: 2px solid #e0e0e0;
             color: var(--text-light);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         @media (max-width: 768px) {
@@ -411,23 +421,23 @@
             }
             
             .course-header {
-                padding: 35px 25px;
+                padding: 30px 22px;
             }
             
             .course-header h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .course-header h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .content-section {
-                padding: 35px 25px;
+                padding: 30px 22px;
             }
             
             .section-title {
-                font-size: 1.9rem;
+                font-size: 1.8rem;
             }
             
             .comparison-grid, .activity-grid {
@@ -440,11 +450,11 @@
             
             .topic-number {
                 margin-right: 0;
-                margin-bottom: 15px;
+                margin-bottom: 14px;
             }
             
             .journey-section {
-                padding: 35px 25px;
+                padding: 30px 22px;
             }
         }
     </style>
@@ -458,7 +468,7 @@
         </header>
 
         <div class="lecture-structure">
-            <h3 style="color: var(--dark-blue); font-size: 1.8rem; margin-bottom: 25px;">📚 Lecture Topics Structure</h3>
+            <h3 style="color: var(--dark-blue); font-size: 1.6rem; margin-bottom: 22px;">📚 Lecture Topics Structure</h3>
             
             <div class="topic-block">
                 <div class="topic-number">1</div>
@@ -566,8 +576,8 @@
                         <li><strong>Storage:</strong> Saves data and information</li>
                     </ul>
                     
-                    <div style="margin-top: 25px; padding: 20px; background: rgba(26, 115, 232, 0.1); border-radius: 10px;">
-                        <h5 style="color: var(--dark-blue); margin-bottom: 15px;">Information Processing Life Cycle:</h5>
+                    <div style="margin-top: 22px; padding: 18px; background: rgba(26, 115, 232, 0.1); border-radius: 10px;">
+                        <h5 style="color: var(--dark-blue); margin-bottom: 14px; font-size: 1.3rem;">Information Processing Life Cycle:</h5>
                         <ul>
                             <li><strong>Instruction:</strong> Steps that tell the computer how to perform a particular task</li>
                             <li><strong>Data Storage:</strong> Computer holds data, information, and instructions in storage for future use</li>
@@ -597,8 +607,8 @@
                         <li>Systems can range from simple (personal computer) to complex (enterprise networks)</li>
                     </ul>
                     
-                    <div style="margin-top: 25px; padding: 20px; background: rgba(52, 168, 83, 0.1); border-radius: 10px;">
-                        <h5 style="color: #0d652d; margin-bottom: 15px;">System Unit Components:</h5>
+                    <div style="margin-top: 22px; padding: 18px; background: rgba(52, 168, 83, 0.1); border-radius: 10px;">
+                        <h5 style="color: #0d652d; margin-bottom: 14px; font-size: 1.3rem;">System Unit Components:</h5>
                         <ul>
                             <li><strong>Processor (CPU):</strong> Electronic component that interprets and carries out basic instructions that operate the computer</li>
                             <li><strong>Memory:</strong> Consists of electronic components that store instructions waiting to be executed and data needed by those instructions</li>
@@ -610,7 +620,7 @@
                 <div class="key-concept">
                     <h4>What Computers Can Do - Practical Applications</h4>
                     
-                    <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                    <div style="background: #f8f9fa; padding: 22px; border-radius: 10px; margin: 18px 0;">
                         <ul>
                             <li><strong>Store Information:</strong> Databases, files, archives</li>
                             <li><strong>Permit Searches:</strong> Information retrieval, data querying</li>
@@ -647,8 +657,8 @@
                             <li><strong>System Software:</strong> Operating systems and utility programs</li>
                         </ul>
                         
-                        <div style="margin-top: 25px; padding: 20px; background: #e8f0fe; border-radius: 8px;">
-                            <h5 style="color: var(--dark-blue); margin-bottom: 10px;">Users:</h5>
+                        <div style="margin-top: 22px; padding: 18px; background: #e8f0fe; border-radius: 8px;">
+                            <h5 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.2rem;">Users:</h5>
                             <ul>
                                 <li><strong>Definition:</strong> Anyone who uses the hardware and software to do some task</li>
                                 <li><strong>Types:</strong> End users, system administrators, developers</li>
@@ -693,7 +703,7 @@
                     </div>
                 </div>
                 
-                <div class="key-concept" style="margin-top: 35px;">
+                <div class="key-concept" style="margin-top: 30px;">
                     <h4>Key Terminologies</h4>
                     
                     <div class="definition-box">
@@ -731,7 +741,7 @@
                             </ul>
                         </div>
                         
-                        <p style="margin-top: 20px; font-style: italic; color: var(--text-light);">
+                        <p style="margin-top: 18px; font-style: italic; color: var(--text-light); font-size: 1rem;">
                             <strong>Note:</strong> You can use system tools like "System Information" on Windows, "About This Mac" on macOS, or system settings on mobile devices.
                         </p>
                     </div>
@@ -750,9 +760,9 @@
                             </ul>
                         </div>
                         
-                        <div style="margin-top: 25px; padding: 20px; background: #e8f0fe; border-radius: 10px;">
-                            <h5 style="color: var(--dark-blue); margin-bottom: 10px;">📝 Activity Notes:</h5>
-                            <p>Work in pairs or small groups. Document your findings and be prepared to share with the class. Focus on understanding how all components work together as a system.</p>
+                        <div style="margin-top: 22px; padding: 18px; background: #e8f0fe; border-radius: 10px;">
+                            <h5 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.2rem;">📝 Activity Notes:</h5>
+                            <p style="font-size: 1.05rem;">Work in pairs or small groups. Document your findings and be prepared to share with the class. Focus on understanding how all components work together as a system.</p>
                         </div>
                     </div>
                 </div>
@@ -768,14 +778,14 @@
                     <p><strong>Data Representation</strong> - How computers store and process information in binary format. We'll explore binary, hexadecimal, ASCII, Unicode, and how different types of data (text, images, audio) are represented in computer systems.</p>
                 </div>
                 
-                <a href="#" class="button">Access Week 2 Complete Materials</a>
+                <a href="./Lecture2.html" class="button">Access Week 2 Complete Materials</a>
             </section>
         </main>
 
         <footer class="footer">
             <p>University College of Applied Sciences | Cybersecurity Engineering Program</p>
             <p>© 2025 Introduction to Computer Systems (ISSE 1201) | Week 1 Complete Lecture Content</p>
-            <p style="margin-top: 15px; font-size: 1rem;">
+            <p style="margin-top: 15px; font-size: 0.95rem;">
                 Instructor: Eng. Mahmoud Khalil | Email: makhalil@ucas.edu.ps
             </p>
         </footer>
