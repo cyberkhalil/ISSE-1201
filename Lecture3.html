@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: Computer Architecture & Processing | UCAS Cybersecurity</title>
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --light-blue: #e8f0fe;
+            --dark-blue: #0d47a1;
+            --accent-blue: #8ab4f8;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+            --success-green: #34a853;
+            --warning-orange: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+            min-height: 100vh;
+            font-size: 18px;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 35px;
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 40px 35px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(26, 115, 232, 0.2);
+        }
+        
+        .course-header h1 {
+            font-size: 2.6rem;
+            font-weight: 300;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        
+        .course-header h2 {
+            font-size: 1.9rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 18px;
+        }
+        
+        .session-info {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin-top: 12px;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+        
+        .lecture-structure {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .topic-block {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .topic-number {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            min-width: 55px;
+            height: 55px;
+            text-align: center;
+            margin-right: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .topic-details {
+            flex: 1;
+        }
+        
+        .topic-details h4 {
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+        
+        .topic-details p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 18px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid var(--primary-blue);
+        }
+        
+        .section-title {
+            color: var(--dark-blue);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 18px;
+            border-bottom: 3px solid var(--light-blue);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 42px;
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+        
+        .key-concept {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .key-concept h4 {
+            color: var(--dark-blue);
+            font-size: 1.6rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .key-concept h4::before {
+            content: "💡";
+            font-size: 1.5rem;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .comparison-column {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid var(--secondary-blue);
+        }
+        
+        .comparison-column h4 {
+            color: var(--dark-blue);
+            margin-bottom: 22px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .comparison-column h4::before {
+            content: "⚙️";
+            font-size: 1.4rem;
+        }
+        
+        .cyber-connection {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid #ffc107;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-connection::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: #ffc107;
+        }
+        
+        .cyber-connection h4 {
+            color: #856404;
+            font-size: 1.6rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .cyber-connection h4::before {
+            content: "🔒";
+            font-size: 1.5rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            margin-bottom: 16px;
+            padding-left: 36px;
+            position: relative;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .definition-box {
+            background: #f0f7ff;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 18px 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .definition-box strong {
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        
+        .in-class-activity {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 35px 0;
+            border-left: 6px solid var(--primary-blue);
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .activity-column {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid var(--secondary-blue);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .activity-column h4 {
+            color: var(--dark-blue);
+            margin-bottom: 22px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .activity-column h4::before {
+            content: "🔍";
+            font-size: 1.4rem;
+        }
+        
+        .step-list {
+            background: #f8f9fa;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 18px 0;
+        }
+        
+        .step-list li {
+            padding-left: 28px;
+            margin-bottom: 14px;
+        }
+        
+        .step-list li::before {
+            content: "✓";
+            color: #34a853;
+            font-weight: bold;
+        }
+        
+        .activity-solutions {
+            background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 6px solid var(--success-green);
+        }
+        
+        .activity-solutions h4 {
+            color: #0d652d;
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .activity-solutions h4::before {
+            content: "✅";
+            font-size: 1.5rem;
+        }
+        
+        .solution-step {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .solution-step h5 {
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .solution-step h5::before {
+            content: "🔑";
+            font-size: 1.2rem;
+        }
+        
+        .code-block {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 1.1rem;
+        }
+        
+        .code-block .comment {
+            color: #75715e;
+        }
+        
+        .code-block .hex {
+            color: #f92672;
+        }
+        
+        .code-block .reg {
+            color: #66d9ef;
+        }
+        
+        .code-block .mem {
+            color: #a6e22e;
+        }
+        
+        .homework-assignment {
+            background: linear-gradient(135deg, #fce4ec 0%, #ffffff 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 35px 0;
+            border-left: 6px solid #9c27b0;
+        }
+        
+        .homework-assignment h3 {
+            color: #880e4f;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .homework-assignment h3::before {
+            content: "📝";
+            font-size: 1.7rem;
+        }
+        
+        .homework-info {
+            background: rgba(156, 39, 176, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .homework-section {
+            margin-bottom: 30px;
+        }
+        
+        .homework-section h4 {
+            color: #6a1b9a;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e1bee7;
+        }
+        
+        .homework-section ol {
+            padding-left: 25px;
+        }
+        
+        .homework-section ol li {
+            margin-bottom: 12px;
+            padding-left: 0;
+        }
+        
+        .homework-section ol li::before {
+            content: none;
+        }
+        
+        .homework-section ul {
+            padding-left: 20px;
+        }
+        
+        .journey-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 18px;
+            text-align: center;
+            margin-top: 45px;
+        }
+        
+        .journey-section h3 {
+            font-size: 2rem;
+            margin-bottom: 22px;
+            font-weight: 300;
+        }
+        
+        .journey-section p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            opacity: 0.95;
+        }
+        
+        .next-week {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 22px;
+            border-radius: 12px;
+            margin-top: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .next-week h4 {
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+        
+        .next-week p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-blue);
+            padding: 16px 40px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 28px;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 55px;
+            padding-top: 35px;
+            border-top: 2px solid #e0e0e0;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        table tr:hover {
+            background-color: #e8f0fe;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .course-header {
+                padding: 30px 22px;
+            }
+            
+            .course-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .course-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .content-section {
+                padding: 30px 22px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .comparison-grid, .activity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topic-block {
+                flex-direction: column;
+            }
+            
+            .topic-number {
+                margin-right: 0;
+                margin-bottom: 14px;
+            }
+            
+            .journey-section {
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="course-header">
+            <h1>Introduction to Computing</h1>
+            <h2>Week 3: Computer Architecture & Processing</h2>
+            <div class="session-info">Cybersecurity Engineering | University College of Applied Science</div>
+        </header>
+
+        <div class="lecture-structure">
+            <h3 style="color: var(--dark-blue); font-size: 1.6rem; margin-bottom: 22px;">📚 Week 3 Lecture Structure</h3>
+            
+            <div class="topic-block">
+                <div class="topic-number">1</div>
+                <div class="topic-details">
+                    <h4>Introduction to Computer Architecture</h4>
+                    <p>Understanding the von Neumann architecture and how computer components interact to process data efficiently.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">2</div>
+                <div class="topic-details">
+                    <h4>CPU Components & Functions</h4>
+                    <p>Detailed examination of ALU, Control Unit, Registers, and the Bus System that connects all components.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">3</div>
+                <div class="topic-details">
+                    <h4>Machine Language & Instruction Types</h4>
+                    <p>Understanding the lowest-level programming language and the three main instruction categories.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">4</div>
+                <div class="topic-details">
+                    <h4>Program Execution & Machine Cycle</h4>
+                    <p>The fetch-decode-execute cycle and how programs are executed step by step by the CPU.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">5</div>
+                <div class="topic-details">
+                    <h4>Logic, Shift, and Rotate Operations</h4>
+                    <p>Bit manipulation techniques essential for data processing and cryptographic operations.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">6</div>
+                <div class="topic-details">
+                    <h4>Practical Applications & Exercises</h4>
+                    <p>Hands-on activities with machine language decoding and bit manipulation programming.</p>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section class="content-section">
+                <h2 class="section-title">1. Introduction to Computer Architecture</h2>
+                
+                <div class="key-concept">
+                    <h4>The von Neumann Architecture</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Computer Architecture:</strong> The design and organization of fundamental computer components and how they interact to process data.</p>
+                    </div>
+                    
+                    <p>Most modern computers follow the von Neumann architecture, which consists of four main components:</p>
+                    <ul>
+                        <li><strong>Central Processing Unit (CPU):</strong> The "brain" that executes instructions</li>
+                        <li><strong>Memory:</strong> Stores both data and instructions</li>
+                        <li><strong>Input/Output Devices:</strong> Interface with the external world</li>
+                        <li><strong>Bus System:</strong> Communication pathways between components</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">2. CPU Components & Functions</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-column">
+                        <h4>🔢 Arithmetic/Logic Unit (ALU)</h4>
+                        <p>Performs all mathematical and logical operations:</p>
+                        <ul>
+                            <li><strong>Arithmetic:</strong> Addition, subtraction, multiplication, division</li>
+                            <li><strong>Logical:</strong> AND, OR, XOR, NOT operations</li>
+                            <li><strong>Bit Shifting:</strong> Shift and rotate operations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-column">
+                        <h4>🎮 Control Unit (CU)</h4>
+                        <p>Coordinates all CPU activities and manages data flow:</p>
+                        <ul>
+                            <li>Directs operation of other CPU components</li>
+                            <li>Manages fetch-decode-execute cycle</li>
+                            <li>Controls data movement between CPU and memory</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-column">
+                        <h4>💾 Registers</h4>
+                        <p>Small, fast storage locations inside the CPU:</p>
+                        <ul>
+                            <li><strong>General Purpose:</strong> Hold temporary data during processing</li>
+                            <li><strong>Special Purpose:</strong> Program Counter (PC), Instruction Register (IR)</li>
+                            <li><strong>Very Fast:</strong> Much faster than main memory access</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">3. Machine Language & Instruction Types</h2>
+                
+                <div class="key-concept">
+                    <h4>Understanding Machine Language</h4>
+                    
+                    <div class="definition-box">
+                        <p><strong>Machine Language:</strong> The lowest-level programming language consisting of binary codes (0s and 1s) that are directly executed by the CPU.</p>
+                    </div>
+                    
+                    <p>Each machine instruction typically has two parts:</p>
+                    <ul>
+                        <li><strong>Op-code:</strong> Specifies the operation to perform (e.g., 3 = STORE, 1 = LOAD)</li>
+                        <li><strong>Operand:</strong> Provides additional information about the operation (which register, memory address)</li>
+                    </ul>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Instruction Type</th>
+                            <th>Purpose</th>
+                            <th>Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Data Transfer</strong></td>
+                            <td>Move data between memory and registers</td>
+                            <td>LOAD, STORE, MOVE</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Arithmetic/Logic</strong></td>
+                            <td>Perform calculations and logical operations</td>
+                            <td>ADD, SUB, AND, OR, XOR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Control</strong></td>
+                            <td>Change program flow and execution</td>
+                            <td>JUMP, BRANCH, CALL, HALT</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="in-class-activity">
+                    <h2 class="section-title">🧩 In-Class Activity: Decoding Machine Instructions</h2>
+                    
+                    <div class="activity-column">
+                        <h4>🔍 Activity 1: Instruction Decoding Challenge</h4>
+                        <p><strong>Objective:</strong> Decode the following machine instructions using Appendix C from the slides</p>
+                        
+                        <div class="step-list">
+                            <p><strong>Instructions to decode:</strong></p>
+                            <ul>
+                                <li>368A</li>
+                                <li>BADE</li>
+                                <li>803C</li>
+                                <li>40F4</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-solutions">
+                        <h4>✅ Activity 1 Solutions</h4>
+                        
+                        <div class="solution-step">
+                            <h5>Instruction 1: 368A</h5>
+                            <p><strong>Answer:</strong> <strong>STORE the contents of register 6 to memory address 8A</strong></p>
+                        </div>
+                        
+                        <div class="solution-step">
+                            <h5>Instruction 2: BADE</h5>
+                            <p><strong>Answer:</strong> <strong>JUMP to address DE if the contents of register A equal the contents of register 0</strong></p>
+                        </div>
+                        
+                        <div class="solution-step">
+                            <h5>Instruction 3: 803C</h5>
+                            <p><strong>Answer:</strong> <strong>ROTATE register 0 three bits to the right</strong></p>
+                        </div>
+                        
+                        <div class="solution-step">
+                            <h5>Instruction 4: 40F4</h5>
+                            <p><strong>Answer:</strong> <strong>AND the contents of register F with register 4, store result in register 0</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">4. Program Execution & Machine Cycle</h2>
+                
+                <div class="key-concept">
+                    <h4>The Fetch-Decode-Execute Cycle</h4>
+                    
+                    <p>Every instruction goes through three stages in a continuous cycle:</p>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-column">
+                            <h4>1. Fetch</h4>
+                            <p>The CPU retrieves the next instruction from memory:</p>
+                            <ul>
+                                <li>Program Counter (PC) holds the address of next instruction</li>
+                                <li>CPU sends address to memory via address bus</li>
+                                <li>Instruction placed in Instruction Register (IR)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>2. Decode</h4>
+                            <p>The CPU interprets the instruction:</p>
+                            <ul>
+                                <li>Control Unit examines op-code in IR</li>
+                                <li>Determines what operation to perform</li>
+                                <li>Identifies which registers or memory addresses are involved</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>3. Execute</h4>
+                            <p>The CPU performs the actual operation:</p>
+                            <ul>
+                                <li>ALU performs calculations if needed</li>
+                                <li>Data moved between registers and memory</li>
+                                <li>Results stored in appropriate locations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">5. Logic, Shift, and Rotate Operations</h2>
+                
+                <div class="key-concept">
+                    <h4>Bit Manipulation Operations</h4>
+                    
+                    <p>These operations are fundamental to low-level programming:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operation</th>
+                                <th>Symbol</th>
+                                <th>Description</th>
+                                <th>Example (Binary)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AND</strong></td>
+                                <td>&</td>
+                                <td>Both bits must be 1 to get 1</td>
+                                <td>1100 & 1010 = 1000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OR</strong></td>
+                                <td>|</td>
+                                <td>At least one bit must be 1 to get 1</td>
+                                <td>1100 | 1010 = 1110</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XOR</strong></td>
+                                <td>^</td>
+                                <td>Bits must be different to get 1</td>
+                                <td>1100 ^ 1010 = 0110</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shift Left</strong></td>
+                                <td><<</td>
+                                <td>Move bits left, fill with 0s</td>
+                                <td>0011 << 1 = 0110</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shift Right</strong></td>
+                                <td>>></td>
+                                <td>Move bits right, fill with 0s</td>
+                                <td>1100 >> 1 = 0110</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="in-class-activity">
+                    <h2 class="section-title">🔧 In-Class Activity: Bit Manipulation Challenge</h2>
+                    
+                    <div class="activity-column">
+                        <h4>🔍 Activity 2: Program Writing Challenge</h4>
+                        <p><strong>Objective:</strong> Write a machine language program that sets the most significant bit of a memory location to 1 without affecting other bits</p>
+                    </div>
+                    
+                    <div class="activity-solutions">
+                        <h4>✅ Activity 2 Solution</h4>
+                        
+                        <div class="solution-step">
+                            <h5>Complete Program Solution:</h5>
+                            <div class="code-block">
+                                <span class="comment"># Set MSB of memory address A7 to 1</span><br>
+                                <span class="hex">12A7</span> <span class="comment"># LOAD register 2 from A7</span><br>
+                                <span class="hex">2380</span> <span class="comment"># LOAD register 3 with 80 (MSB mask)</span><br>
+                                <span class="hex">7023</span> <span class="comment"># OR register 2 and 3, result in register 0</span><br>
+                                <span class="hex">30A7</span> <span class="comment"># STORE register 0 to A7</span><br>
+                                <span class="hex">C000</span> <span class="comment"># HALT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="homework-assignment">
+                <h3>📝 Homework Assignment - Week 3</h3>
+                
+                <div class="homework-info">
+                    <p><strong>Submission Method:</strong> PDF document via Google Classroom</p>
+                    <p><strong>Instructions:</strong> Answer all questions in your own words. Show all work for calculations and programming exercises.</p>
+                </div>
+                
+                <div class="homework-section">
+                    <h4>Part 1: Theory Questions (40 points)</h4>
+                    <ol>
+                        <li>Explain the three main components of a CPU and their specific functions. (10 points)</li>
+                        <li>What is the difference between a LOAD instruction and a STORE instruction in machine language? (5 points)</li>
+                        <li>Describe the three steps of the machine cycle (fetch, decode, execute). (10 points)</li>
+                        <li>What is the purpose of the Program Counter (PC) register? What happens to it after each instruction is fetched? (5 points)</li>
+                        <li>Explain how the AND operation can be used for "masking" bits. Provide a specific example with binary numbers. (10 points)</li>
+                    </ol>
+                </div>
+                
+                <div class="homework-section">
+                    <h4>Part 2: Machine Language Translation (30 points)</h4>
+                    <p>Using the machine language described in Appendix C (from the slides):</p>
+                    <ol>
+                        <li>Translate the following machine language instructions to English: (15 points)
+                            <ul>
+                                <li>15B3</li>
+                                <li>702F</li>
+                                <li>C000</li>
+                            </ul>
+                        </li>
+                        <li>Write machine language instructions for the following operations: (15 points)
+                            <ul>
+                                <li>ADD the contents of register 4 and register 7, leaving the result in register 1</li>
+                                <li>JUMP to memory address 5C if the contents of register 3 equal the contents of register 0</li>
+                                <li>LOAD register number 3 with the value stored at memory address 56</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="homework-section">
+                    <h4>Part 3: Bit Manipulation Exercises (30 points)</h4>
+                    <ol>
+                        <li>Given the byte 11011010 (binary), what mask would you use with what operation to: (15 points)
+                            <ul>
+                                <li>Clear (set to 0) the first 3 bits (leftmost)</li>
+                                <li>Set the last 2 bits to 1</li>
+                                <li>Toggle (flip) the middle 4 bits</li>
+                            </ul>
+                        </li>
+                        <li>Write a machine language program that clears the least significant bit (bit 0) of the value in memory address B2 without affecting the other 7 bits. Provide your answer in hexadecimal instruction format. (15 points)</li>
+                    </ol>
+                </div>
+                
+                <div class="homework-section">
+                    <h4>Submission Guidelines</h4>
+                    <ul>
+                        <li>Include your name, student ID, and "Week 3 Homework" at the top of the document</li>
+                        <li>Organize your answers clearly with question numbers</li>
+                        <li>For programming exercises, show your work and explain your reasoning</li>
+                        <li>Submit as a single PDF file named: "YourName_ID_Week3_HW.pdf"</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="journey-section">
+                <h3>Ready to Continue Your Computing Journey?</h3>
+                <p>Understanding computer architecture is fundamental to all computing fields. This knowledge will help you understand how software interacts with hardware and forms the basis for more advanced topics.</p>
+                
+                <div class="next-week">
+                    <h4>📅 Next Week Preview: Storage Systems</h4>
+                    <p><strong>What You'll Learn:</strong> Different types of computer memory (RAM, ROM, cache), secondary storage devices (HDD, SSD), memory hierarchy, and how data is stored and retrieved in computer systems.</p>
+                </div>
+                
+                <a href="./week4.html" class="button">Continue to Week 4: Storage Systems</a>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>University College of Applied Sciences | Cybersecurity Engineering Program</p>
+            <p>© 2025 Introduction to Computing | Week 3: Computer Architecture & Processing</p>
+            <p style="margin-top: 15px; font-size: 0.95rem;">
+                Instructor: Eng. Mahmoud Khalil | Email: makhalil@ucas.edu.ps<br>
+                Original content by Eng. Nael Aburas (2020) | Adapted and expanded by Eng. Mahmoud Khalil (2025)
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

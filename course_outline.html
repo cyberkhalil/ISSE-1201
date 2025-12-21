@@ -73,6 +73,76 @@
             margin-bottom: 5px;
         }
         
+        /* Week Navigation Styles */
+        .week-navigation {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .week-navigation h3 {
+            color: var(--dark-blue);
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+        
+        .week-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .week-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .week-button:hover {
+            background: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .week-button:active {
+            transform: translateY(0);
+        }
+        
+        .week-button::before {
+            content: "📅";
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+        
+        /* Week-specific button colors */
+        .week-button:nth-child(1) { background: #1a73e8; }
+        .week-button:nth-child(2) { background: #4285f4; }
+        .week-button:nth-child(3) { background: #5c6bc0; }
+        .week-button:nth-child(4) { background: #3f51b5; }
+        .week-button:nth-child(5) { background: #3949ab; }
+        .week-button:nth-child(6) { background: #303f9f; }
+        .week-button:nth-child(7) { background: #283593; }
+        .week-button:nth-child(8) { background: #1a237e; }
+        .week-button:nth-child(9) { background: #0d47a1; }
+        .week-button:nth-child(10) { background: #1565c0; }
+        
         .week-section {
             margin-bottom: 25px;
             padding: 25px;
@@ -80,6 +150,7 @@
             border-radius: 10px;
             background: white;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            scroll-margin-top: 80px; /* This creates space above each section when jumping */
         }
         
         .week-section:hover {
@@ -94,12 +165,37 @@
             margin-top: 0;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
         
         .week-title::before {
             content: "📅";
             margin-right: 10px;
             font-size: 1.2em;
+        }
+        
+        .week-link {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .week-link:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .week-link::before {
+            content: "📖";
+            margin-right: 6px;
         }
         
         .learning-objectives {
@@ -128,6 +224,19 @@
         @media (max-width: 768px) {
             .topics-grid {
                 grid-template-columns: 1fr;
+            }
+            .week-buttons {
+                gap: 8px;
+            }
+            .week-button {
+                padding: 10px 18px;
+                min-width: 100px;
+                font-size: 0.85em;
+            }
+            .week-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
         }
         
@@ -257,6 +366,38 @@
             font-size: 0.8em;
             margin-left: 10px;
         }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: none;
+            font-size: 1.2em;
+        }
+        
+        .back-to-top:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        .quick-note {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #2e7d32;
+            text-align: center;
+            border: 1px solid #c8e6c9;
+        }
     </style>
 </head>
 <body>
@@ -315,11 +456,31 @@
             </div>
         </div>
 
-        <h2 style="color: var(--dark-blue); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px;">Weekly Course Plan</h2>
+        <!-- Week Navigation Buttons -->
+        <div class="week-navigation">
+            <h3>📋 Jump to Week</h3>
+            <div class="week-buttons">
+                <a href="#week1" class="week-button">Week 1</a>
+                <a href="#week2" class="week-button">Week 2</a>
+                <a href="#week3" class="week-button">Week 3</a>
+                <a href="#week4" class="week-button">Week 4</a>
+                <a href="#week5" class="week-button">Week 5</a>
+                <a href="#week6" class="week-button">Week 6</a>
+                <a href="#week7" class="week-button">Week 7</a>
+                <a href="#week8" class="week-button">Week 8</a>
+                <a href="#week9" class="week-button">Week 9</a>
+                <a href="#week10" class="week-button">Week 10</a>
+            </div>
+        </div>
+
+
+        <h2 style="color: var(--dark-blue); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px;">Weekly Course Plan Overview</h2>
 
         <!-- Week 1 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 1: Introduction to Computing</h3>
+        <div class="week-section" id="week1">
+            <h3 class="week-title">Week 1: Introduction to Computing
+                <a href="Lecture1.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -350,8 +511,10 @@
         </div>
 
         <!-- Week 2 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 2: Data Representation in Computers</h3>
+        <div class="week-section" id="week2">
+            <h3 class="week-title">Week 2: Data Representation in Computers
+                <a href="Lecture2.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -382,8 +545,10 @@
         </div>
 
         <!-- Week 3 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 3: Computer Architecture and Processing</h3>
+        <div class="week-section" id="week3">
+            <h3 class="week-title">Week 3: Computer Architecture and Processing
+                <a href="Lecture3.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -414,8 +579,10 @@
         </div>
 
         <!-- Week 4 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 4: Storage Systems</h3>
+        <div class="week-section" id="week4">
+            <h3 class="week-title">Week 4: Storage Systems
+                <a href="Lecture4.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -447,8 +614,10 @@
         </div>
 
         <!-- Week 5 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 5: Operating Systems and Processes</h3>
+        <div class="week-section" id="week5">
+            <h3 class="week-title">Week 5: Operating Systems and Processes
+                <a href="Lecture5.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -480,8 +649,10 @@
         </div>
 
         <!-- Week 6 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 6: Networking Fundamentals</h3>
+        <div class="week-section" id="week6">
+            <h3 class="week-title">Week 6: Networking Fundamentals
+                <a href="Lecture6.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -513,8 +684,10 @@
         </div>
 
         <!-- Week 7 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 7: Internet and Applications</h3>
+        <div class="week-section" id="week7">
+            <h3 class="week-title">Week 7: Internet and Applications
+                <a href="Lecture7.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -546,8 +719,10 @@
         </div>
 
         <!-- Week 8 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 8: System Commands for Diagnostics</h3>
+        <div class="week-section" id="week8">
+            <h3 class="week-title">Week 8: System Commands for Diagnostics
+                <a href="Lecture8.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -579,8 +754,10 @@
         </div>
 
         <!-- Week 9 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 9: Cybersecurity Foundations</h3>
+        <div class="week-section" id="week9">
+            <h3 class="week-title">Week 9: Cybersecurity Foundations
+                <a href="Lecture9.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -612,8 +789,10 @@
         </div>
 
         <!-- Week 10 -->
-        <div class="week-section">
-            <h3 class="week-title">Week 10: Final Practical Project</h3>
+        <div class="week-section" id="week10">
+            <h3 class="week-title">Week 10: Final Practical Project
+                <a href="Lecture10.html" class="week-link">View Full Lecture</a>
+            </h3>
             <div class="learning-objectives">
                 <strong>🎯 Learning Objectives:</strong>
                 <ul>
@@ -653,7 +832,7 @@
 
         <h3 style="color: var(--dark-blue);">💡 Teaching Approach</h3>
         <div class="teaching-approach">
-            <div class="approach-item">Interactive Lectures & Discussions</div>
+            <div class="approach-item">Interactive Lectures &amp; Discussions</div>
             <div class="approach-item">Hands-on Practical Exercises</div>
             <div class="approach-item">Real-world Case Studies</div>
             <div class="approach-item">Collaborative Learning</div>
@@ -665,5 +844,58 @@
             <p><strong>Instructor:</strong> Eng. Mahmoud Khalil | <strong>Email:</strong> makhalil@ucas.edu.ps</p>
         </footer>
     </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for internal week navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Get the offset position of the target element
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - 80; // Adjust for header
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add confirmation for external links
+        document.querySelectorAll('.week-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const weekNumber = this.textContent.match(/\d+/);
+                if (weekNumber) {
+                    console.log(`Navigating to Lecture${weekNumber[0]}.html`);
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
