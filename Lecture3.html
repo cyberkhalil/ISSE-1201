@@ -4,600 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 3: Computer Architecture & Processing | UCAS Cybersecurity</title>
-    <style>
-        :root {
-            --primary-blue: #1a73e8;
-            --secondary-blue: #4285f4;
-            --light-blue: #e8f0fe;
-            --dark-blue: #0d47a1;
-            --accent-blue: #8ab4f8;
-            --text-dark: #202124;
-            --text-light: #5f6368;
-            --success-green: #34a853;
-            --warning-orange: #ff9800;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
-            min-height: 100vh;
-            font-size: 18px;
-        }
-        
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 40px 35px;
-        }
-        
-        .course-header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-            color: white;
-            padding: 40px 35px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 5px 25px rgba(26, 115, 232, 0.2);
-        }
-        
-        .course-header h1 {
-            font-size: 2.6rem;
-            font-weight: 300;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-        
-        .course-header h2 {
-            font-size: 1.9rem;
-            font-weight: 300;
-            opacity: 0.95;
-            margin-bottom: 18px;
-        }
-        
-        .session-info {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.25);
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            margin-top: 12px;
-            backdrop-filter: blur(10px);
-            font-weight: 500;
-        }
-        
-        .lecture-structure {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            margin: 30px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        .topic-block {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 22px;
-            padding-bottom: 22px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .topic-number {
-            background: var(--primary-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 1.2rem;
-            min-width: 55px;
-            height: 55px;
-            text-align: center;
-            margin-right: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .topic-details {
-            flex: 1;
-        }
-        
-        .topic-details h4 {
-            font-size: 1.5rem;
-            color: var(--dark-blue);
-            margin-bottom: 10px;
-        }
-        
-        .topic-details p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-        
-        .content-section {
-            background: white;
-            padding: 40px 35px;
-            border-radius: 18px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border-left: 6px solid var(--primary-blue);
-        }
-        
-        .section-title {
-            color: var(--dark-blue);
-            font-size: 2rem;
-            margin-bottom: 30px;
-            padding-bottom: 18px;
-            border-bottom: 3px solid var(--light-blue);
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-        
-        .section-title::before {
-            content: "";
-            display: inline-block;
-            width: 10px;
-            height: 42px;
-            background: var(--primary-blue);
-            border-radius: 5px;
-        }
-        
-        .key-concept {
-            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border: 2px solid var(--accent-blue);
-        }
-        
-        .key-concept h4 {
-            color: var(--dark-blue);
-            font-size: 1.6rem;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        
-        .key-concept h4::before {
-            content: "💡";
-            font-size: 1.5rem;
-        }
-        
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .comparison-column {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            border-top: 5px solid var(--secondary-blue);
-        }
-        
-        .comparison-column h4 {
-            color: var(--dark-blue);
-            margin-bottom: 22px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        
-        .comparison-column h4::before {
-            content: "⚙️";
-            font-size: 1.4rem;
-        }
-        
-        .cyber-connection {
-            background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-            border: 2px solid #ffc107;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cyber-connection::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 8px;
-            height: 100%;
-            background: #ffc107;
-        }
-        
-        .cyber-connection h4 {
-            color: #856404;
-            font-size: 1.6rem;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        
-        .cyber-connection h4::before {
-            content: "🔒";
-            font-size: 1.5rem;
-        }
-        
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        li {
-            margin-bottom: 16px;
-            padding-left: 36px;
-            position: relative;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-        
-        li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .definition-box {
-            background: #f0f7ff;
-            padding: 22px;
-            border-radius: 10px;
-            margin: 18px 0;
-            border-left: 4px solid var(--primary-blue);
-        }
-        
-        .definition-box strong {
-            color: var(--dark-blue);
-            font-weight: 600;
-        }
-        
-        .in-class-activity {
-            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
-            padding: 40px;
-            border-radius: 16px;
-            margin: 35px 0;
-            border-left: 6px solid var(--primary-blue);
-        }
-        
-        .activity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .activity-column {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border-top: 5px solid var(--secondary-blue);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-        
-        .activity-column h4 {
-            color: var(--dark-blue);
-            margin-bottom: 22px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        
-        .activity-column h4::before {
-            content: "🔍";
-            font-size: 1.4rem;
-        }
-        
-        .step-list {
-            background: #f8f9fa;
-            padding: 22px;
-            border-radius: 10px;
-            margin: 18px 0;
-        }
-        
-        .step-list li {
-            padding-left: 28px;
-            margin-bottom: 14px;
-        }
-        
-        .step-list li::before {
-            content: "✓";
-            color: #34a853;
-            font-weight: bold;
-        }
-        
-        .activity-solutions {
-            background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-            border-left: 6px solid var(--success-green);
-        }
-        
-        .activity-solutions h4 {
-            color: #0d652d;
-            font-size: 1.7rem;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        
-        .activity-solutions h4::before {
-            content: "✅";
-            font-size: 1.5rem;
-        }
-        
-        .solution-step {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #c8e6c9;
-        }
-        
-        .solution-step h5 {
-            color: var(--dark-blue);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .solution-step h5::before {
-            content: "🔑";
-            font-size: 1.2rem;
-        }
-        
-        .code-block {
-            background: #272822;
-            color: #f8f8f2;
-            padding: 20px;
-            border-radius: 8px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            margin: 15px 0;
-            overflow-x: auto;
-            font-size: 1.1rem;
-        }
-        
-        .code-block .comment {
-            color: #75715e;
-        }
-        
-        .code-block .hex {
-            color: #f92672;
-        }
-        
-        .code-block .reg {
-            color: #66d9ef;
-        }
-        
-        .code-block .mem {
-            color: #a6e22e;
-        }
-        
-        .homework-assignment {
-            background: linear-gradient(135deg, #fce4ec 0%, #ffffff 100%);
-            padding: 40px;
-            border-radius: 16px;
-            margin: 35px 0;
-            border-left: 6px solid #9c27b0;
-        }
-        
-        .homework-assignment h3 {
-            color: #880e4f;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .homework-assignment h3::before {
-            content: "📝";
-            font-size: 1.7rem;
-        }
-        
-        .homework-info {
-            background: rgba(156, 39, 176, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-        }
-        
-        .homework-section {
-            margin-bottom: 30px;
-        }
-        
-        .homework-section h4 {
-            color: #6a1b9a;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e1bee7;
-        }
-        
-        .homework-section ol {
-            padding-left: 25px;
-        }
-        
-        .homework-section ol li {
-            margin-bottom: 12px;
-            padding-left: 0;
-        }
-        
-        .homework-section ol li::before {
-            content: none;
-        }
-        
-        .homework-section ul {
-            padding-left: 20px;
-        }
-        
-        .journey-section {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
-            padding: 45px;
-            border-radius: 18px;
-            text-align: center;
-            margin-top: 45px;
-        }
-        
-        .journey-section h3 {
-            font-size: 2rem;
-            margin-bottom: 22px;
-            font-weight: 300;
-        }
-        
-        .journey-section p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            margin-bottom: 18px;
-            opacity: 0.95;
-        }
-        
-        .next-week {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 22px;
-            border-radius: 12px;
-            margin-top: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .next-week h4 {
-            font-size: 1.5rem;
-            margin-bottom: 14px;
-            font-weight: 500;
-        }
-        
-        .next-week p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .button {
-            display: inline-block;
-            background: white;
-            color: var(--primary-blue);
-            padding: 16px 40px;
-            border-radius: 35px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-top: 28px;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-        }
-        
-        .button:hover {
-            background: transparent;
-            color: white;
-            border-color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 55px;
-            padding-top: 35px;
-            border-top: 2px solid #e0e0e0;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        table th {
-            background: var(--primary-blue);
-            color: white;
-            padding: 18px 20px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        table td {
-            padding: 16px 20px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        table tr:hover {
-            background-color: #e8f0fe;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
-            .course-header {
-                padding: 30px 22px;
-            }
-            
-            .course-header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .course-header h2 {
-                font-size: 1.6rem;
-            }
-            
-            .content-section {
-                padding: 30px 22px;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .comparison-grid, .activity-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .topic-block {
-                flex-direction: column;
-            }
-            
-            .topic-number {
-                margin-right: 0;
-                margin-bottom: 14px;
-            }
-            
-            .journey-section {
-                padding: 30px 22px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -614,7 +21,7 @@
                 <div class="topic-number">1</div>
                 <div class="topic-details">
                     <h4>Introduction to Computer Architecture</h4>
-                    <p>Understanding the von Neumann architecture and how computer components interact to process data efficiently.</p>
+                    <p>Understanding how computers manipulate data through CPU architecture and bus systems.</p>
                 </div>
             </div>
             
@@ -630,7 +37,7 @@
                 <div class="topic-number">3</div>
                 <div class="topic-details">
                     <h4>Machine Language & Instruction Types</h4>
-                    <p>Understanding the lowest-level programming language and the three main instruction categories.</p>
+                    <p>Understanding machine language, instruction encoding (op-code & operand), and instruction categories.</p>
                 </div>
             </div>
             
@@ -645,13 +52,21 @@
             <div class="topic-block">
                 <div class="topic-number">5</div>
                 <div class="topic-details">
-                    <h4>Logic, Shift, and Rotate Operations</h4>
-                    <p>Bit manipulation techniques essential for data processing and cryptographic operations.</p>
+                    <h4>Arithmetic/Logic Instructions</h4>
+                    <p>Detailed examination of arithmetic operations, logical operations (AND, OR, XOR), and their applications.</p>
                 </div>
             </div>
             
             <div class="topic-block">
                 <div class="topic-number">6</div>
+                <div class="topic-details">
+                    <h4>Shift and Rotate Operations</h4>
+                    <p>Understanding bit manipulation through shift and rotate operations, including logical shifts.</p>
+                </div>
+            </div>
+            
+            <div class="topic-block">
+                <div class="topic-number">7</div>
                 <div class="topic-details">
                     <h4>Practical Applications & Exercises</h4>
                     <p>Hands-on activities with machine language decoding and bit manipulation programming.</p>
@@ -661,22 +76,16 @@
 
         <main>
             <section class="content-section">
-                <h2 class="section-title">1. Introduction to Computer Architecture</h2>
+                <h2 class="section-title">1. Data Manipulation & Computer Architecture</h2>
                 
                 <div class="key-concept">
-                    <h4>The von Neumann Architecture</h4>
+                    <h4>Overview of Data Manipulation</h4>
                     
                     <div class="definition-box">
-                        <p><strong>Computer Architecture:</strong> The design and organization of fundamental computer components and how they interact to process data.</p>
+                        <p><strong>Data Manipulation:</strong> The process of how computers manipulate data including moving data from one location to another and performing operations such as arithmetic calculations and text editing.</p>
                     </div>
                     
-                    <p>Most modern computers follow the von Neumann architecture, which consists of four main components:</p>
-                    <ul>
-                        <li><strong>Central Processing Unit (CPU):</strong> The "brain" that executes instructions</li>
-                        <li><strong>Memory:</strong> Stores both data and instructions</li>
-                        <li><strong>Input/Output Devices:</strong> Interface with the external world</li>
-                        <li><strong>Bus System:</strong> Communication pathways between components</li>
-                    </ul>
+                    <p>The circuitry in the computer that controls the manipulation of data is called the <strong>CPU (Central Processing Unit)</strong>. Modern CPUs are packaged as small flat squares called <strong>microprocessors</strong> that plug into sockets on the main board.</p>
                 </div>
             </section>
 
@@ -698,20 +107,49 @@
                         <h4>🎮 Control Unit (CU)</h4>
                         <p>Coordinates all CPU activities and manages data flow:</p>
                         <ul>
-                            <li>Directs operation of other CPU components</li>
-                            <li>Manages fetch-decode-execute cycle</li>
-                            <li>Controls data movement between CPU and memory</li>
+                            <li>Coordinates the machine's activities</li>
+                            <li>Transfers data from main memory into registers</li>
+                            <li>Activates appropriate circuitry within ALU</li>
+                            <li>Manages the machine cycle</li>
                         </ul>
                     </div>
                     
                     <div class="comparison-column">
                         <h4>💾 Registers</h4>
-                        <p>Small, fast storage locations inside the CPU:</p>
+                        <p>Data storage cells used for temporary storage within CPU:</p>
                         <ul>
-                            <li><strong>General Purpose:</strong> Hold temporary data during processing</li>
-                            <li><strong>Special Purpose:</strong> Program Counter (PC), Instruction Register (IR)</li>
-                            <li><strong>Very Fast:</strong> Much faster than main memory access</li>
+                            <li><strong>Function:</strong> Hold inputs to ALU and provide storage for results</li>
+                            <li><strong>Speed:</strong> Much faster than main memory access</li>
+                            <li><strong>Types:</strong> General purpose and special purpose (PC, IR)</li>
                         </ul>
+                    </div>
+                </div>
+                
+                <div class="key-concept">
+                    <h4>Bus System</h4>
+                    
+                    <p>The CPU and main memory are connected by a collection of wires called a <strong>bus</strong>. This bus transfers bits between components:</p>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-column">
+                            <h4>📥 CPU Read Operation</h4>
+                            <p>The CPU reads data from main memory by:</p>
+                            <ul>
+                                <li>Supplying the address of the pertinent memory cell</li>
+                                <li>Sending an electronic signal telling memory to retrieve data</li>
+                                <li>Receiving the data through the bus</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>📤 CPU Write Operation</h4>
+                            <p>The CPU writes data to main memory by:</p>
+                            <ul>
+                                <li>Providing the address of the destination cell</li>
+                                <li>Sending the data to be stored</li>
+                                <li>Sending an electronic signal telling memory to store the data</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -723,13 +161,26 @@
                     <h4>Understanding Machine Language</h4>
                     
                     <div class="definition-box">
-                        <p><strong>Machine Language:</strong> The lowest-level programming language consisting of binary codes (0s and 1s) that are directly executed by the CPU.</p>
+                        <p><strong>Machine Language:</strong> The set (collection) of all instructions recognized by a machine (CPU). Each instruction (or command) is encoded as a bit pattern recognizable by the CPU.</p>
+                        <p><strong>Compilers and Interpreters:</strong> Translate from high-level language to machine language.</p>
                     </div>
                     
-                    <p>Each machine instruction typically has two parts:</p>
+                    <h4>Instruction Encoding</h4>
+                    <p>Each machine instruction consists of two parts:</p>
                     <ul>
-                        <li><strong>Op-code:</strong> Specifies the operation to perform (e.g., 3 = STORE, 1 = LOAD)</li>
-                        <li><strong>Operand:</strong> Provides additional information about the operation (which register, memory address)</li>
+                        <li><strong>Op-code:</strong> Indicates which operation is requested (e.g., 3 = STORE, 1 = LOAD)</li>
+                        <li><strong>Operand:</strong> Provides more detailed information about the operation specified by the op-code</li>
+                    </ul>
+                </div>
+                
+                <div class="key-concept">
+                    <h4>Illustrative Machine Language System</h4>
+                    <p>For our illustrative machine:</p>
+                    <ul>
+                        <li>16 registers labeled 0 through F (hexadecimal)</li>
+                        <li>256 main memory cells addressed 00 through FF</li>
+                        <li>Each instruction encoded using 16 bits (4 hexadecimal digits)</li>
+                        <li>Example: Instruction "35A7" translates to "STORE the bit pattern found in register 5 in the main memory cell whose address is A7"</li>
                     </ul>
                 </div>
                 
@@ -745,12 +196,12 @@
                         <tr>
                             <td><strong>Data Transfer</strong></td>
                             <td>Move data between memory and registers</td>
-                            <td>LOAD, STORE, MOVE</td>
+                            <td>LOAD, STORE, MOVE, I/O Instructions</td>
                         </tr>
                         <tr>
                             <td><strong>Arithmetic/Logic</strong></td>
                             <td>Perform calculations and logical operations</td>
-                            <td>ADD, SUB, AND, OR, XOR</td>
+                            <td>ADD, SUB, AND, OR, XOR, SHIFT, ROTATE</td>
                         </tr>
                         <tr>
                             <td><strong>Control</strong></td>
@@ -760,12 +211,68 @@
                     </tbody>
                 </table>
                 
+                <div class="key-concept">
+                    <h4>Appendix C: Simple Machine Language Reference</h4>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Op-code</th>
+                                <th>Operand</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>RXY</td>
+                                <td>LOAD register R with the bit pattern found in memory cell at address XY</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>RXY</td>
+                                <td>STORE the bit pattern found in register R in memory cell at address XY</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>RST</td>
+                                <td>ADD the bit pattern in register S and T (2's complement) and leave result in register R</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>RST</td>
+                                <td>OR register S and T, leaving result in register R</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>R0S</td>
+                                <td>ROTATE register R one bit to the right S times</td>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>R0S</td>
+                                <td>ROTATE register R one bit to the left S times</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>RXY</td>
+                                <td>JUMP to address XY if the contents of register R equal the contents of register 0</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>000</td>
+                                <td>HALT execution</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
                 <div class="in-class-activity">
-                    <h2 class="section-title">🧩 In-Class Activity: Decoding Machine Instructions</h2>
+                    <h2 class="section-title">🧩 In-Class Activity: Machine Language Exercises</h2>
                     
                     <div class="activity-column">
                         <h4>🔍 Activity 1: Instruction Decoding Challenge</h4>
-                        <p><strong>Objective:</strong> Decode the following machine instructions using Appendix C from the slides</p>
+                        <p><strong>Objective:</strong> Decode the following machine instructions using Appendix C</p>
                         
                         <div class="step-list">
                             <p><strong>Instructions to decode:</strong></p>
@@ -784,21 +291,61 @@
                         <div class="solution-step">
                             <h5>Instruction 1: 368A</h5>
                             <p><strong>Answer:</strong> <strong>STORE the contents of register 6 to memory address 8A</strong></p>
+                            <p><strong>Explanation:</strong> Op-code 3 = STORE, R = 6, XY = 8A</p>
                         </div>
                         
                         <div class="solution-step">
                             <h5>Instruction 2: BADE</h5>
                             <p><strong>Answer:</strong> <strong>JUMP to address DE if the contents of register A equal the contents of register 0</strong></p>
+                            <p><strong>Explanation:</strong> Op-code B = JUMP if equal, R = A, XY = DE</p>
                         </div>
                         
                         <div class="solution-step">
                             <h5>Instruction 3: 803C</h5>
                             <p><strong>Answer:</strong> <strong>ROTATE register 0 three bits to the right</strong></p>
+                            <p><strong>Explanation:</strong> Op-code 8 = ROTATE right, R = 0, S = 3 (C in hexadecimal = 12 decimal, but in this context 3 bits)</p>
                         </div>
                         
                         <div class="solution-step">
                             <h5>Instruction 4: 40F4</h5>
                             <p><strong>Answer:</strong> <strong>AND the contents of register F with register 4, store result in register 0</strong></p>
+                            <p><strong>Explanation:</strong> Op-code 4 = AND operation (based on full Appendix C), R = 0, S = F, T = 4</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-column">
+                        <h4>🔍 Activity 2: Instruction Encoding Challenge</h4>
+                        <p><strong>Objective:</strong> Translate the following English instructions into machine language using Appendix C</p>
+                        
+                        <div class="step-list">
+                            <p><strong>Instructions to encode:</strong></p>
+                            <ul>
+                                <li>LOAD register number 3 with the hexadecimal value 56</li>
+                                <li>ROTATE register number 5 three bits to the right</li>
+                                <li>AND the contents of register A with the contents of register 5 and leave the result in register 0</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-solutions">
+                        <h4>✅ Activity 2 Solutions</h4>
+                        
+                        <div class="solution-step">
+                            <h5>Instruction 1: LOAD register 3 with value 56</h5>
+                            <p><strong>Answer:</strong> <strong>1356</strong></p>
+                            <p><strong>Explanation:</strong> Op-code 1 = LOAD, R = 3, XY = 56</p>
+                        </div>
+                        
+                        <div class="solution-step">
+                            <h5>Instruction 2: ROTATE register 5 three bits right</h5>
+                            <p><strong>Answer:</strong> <strong>8503</strong></p>
+                            <p><strong>Explanation:</strong> Op-code 8 = ROTATE right, R = 5, S = 3</p>
+                        </div>
+                        
+                        <div class="solution-step">
+                            <h5>Instruction 3: AND register A with register 5, result in register 0</h5>
+                            <p><strong>Answer:</strong> <strong>40A5</strong></p>
+                            <p><strong>Explanation:</strong> Op-code 4 = AND, R = 0, S = A, T = 5</p>
                         </div>
                     </div>
                 </div>
@@ -808,6 +355,24 @@
                 <h2 class="section-title">4. Program Execution & Machine Cycle</h2>
                 
                 <div class="key-concept">
+                    <h4>Program Execution Process</h4>
+                    
+                    <p>A computer follows a program stored in its memory by copying instructions from memory into the CPU as needed. Two special purpose registers control this process:</p>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-column">
+                            <h4>📝 Instruction Register (IR)</h4>
+                            <p>Contains the instruction that is currently being executed (current instruction)</p>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>📊 Program Counter (PC)</h4>
+                            <p>Contains the address of the next instruction to be executed (next instruction)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-concept">
                     <h4>The Fetch-Decode-Execute Cycle</h4>
                     
                     <p>Every instruction goes through three stages in a continuous cycle:</p>
@@ -815,17 +380,17 @@
                     <div class="comparison-grid">
                         <div class="comparison-column">
                             <h4>1. Fetch</h4>
-                            <p>The CPU retrieves the next instruction from memory:</p>
+                            <p>The CPU requests the main memory to provide the instruction stored at the address indicated by the program counter.</p>
                             <ul>
-                                <li>Program Counter (PC) holds the address of next instruction</li>
-                                <li>CPU sends address to memory via address bus</li>
-                                <li>Instruction placed in Instruction Register (IR)</li>
+                                <li>CPU places the instruction in its instruction register</li>
+                                <li>Program counter is incremented (ready for next fetch)</li>
+                                <li>Note: Instructions may span multiple memory cells (e.g., 16-bit instructions)</li>
                             </ul>
                         </div>
                         
                         <div class="comparison-column">
                             <h4>2. Decode</h4>
-                            <p>The CPU interprets the instruction:</p>
+                            <p>The CPU breaks the operand field into its proper components based on the instruction's op-code.</p>
                             <ul>
                                 <li>Control Unit examines op-code in IR</li>
                                 <li>Determines what operation to perform</li>
@@ -835,7 +400,7 @@
                         
                         <div class="comparison-column">
                             <h4>3. Execute</h4>
-                            <p>The CPU performs the actual operation:</p>
+                            <p>The CPU executes the instruction by activating the appropriate circuitry to perform the requested task.</p>
                             <ul>
                                 <li>ALU performs calculations if needed</li>
                                 <li>Data moved between registers and memory</li>
@@ -844,15 +409,209 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="key-concept">
+                    <h4>Special Case: JUMP Instructions</h4>
+                    
+                    <p>When executing a JUMP instruction (e.g., B258 = "JUMP to address 58 if contents of register 2 equals register 0"):</p>
+                    <ul>
+                        <li>If registers contain different bit patterns, execution terminates normally</li>
+                        <li>If equal, the machine places the value at address 58 in its program counter during execute step</li>
+                        <li>Next fetch step finds 58 in the program counter, so instruction at that address is fetched next</li>
+                    </ul>
+                </div>
+                
+                <div class="in-class-activity">
+                    <h2 class="section-title">🔍 Exercise: Program Execution Analysis</h2>
+                    
+                    <div class="activity-column">
+                        <h4>Exercise 1: Memory Analysis</h4>
+                        <p><strong>Scenario:</strong> Suppose memory cells from address 00 to 05 contain the hexadecimal bit patterns:</p>
+                        <div class="code-block">
+                            00: 1504<br>
+                            01: 2505<br>
+                            02: 5056<br>
+                            03: 3007<br>
+                            04: C000<br>
+                            05: 0000
+                        </div>
+                        <p><strong>Question:</strong> If we start the machine with program counter at 00, what bit pattern is in memory cell address 17 when the machine halts?</p>
+                    </div>
+                    
+                    <div class="activity-column">
+                        <h4>Exercise 2: Register and Memory Analysis</h4>
+                        <p><strong>Scenario:</strong> Memory cells from address B0 to B8 contain:</p>
+                        <div class="code-block">
+                            B0: 135C<br>
+                            B1: 235D<br>
+                            B2: 5056<br>
+                            B3: 7034<br>
+                            B4: 30B8<br>
+                            B5: C000<br>
+                            B6: 0000<br>
+                            B7: 0000<br>
+                            B8: 0000
+                        </div>
+                        <p><strong>Questions:</strong></p>
+                        <ol>
+                            <li>What bit pattern is in register 3 after first instruction executes?</li>
+                            <li>What bit pattern is in memory cell B8 when halt instruction executes?</li>
+                        </ol>
+                    </div>
+                </div>
             </section>
 
             <section class="content-section">
-                <h2 class="section-title">5. Logic, Shift, and Rotate Operations</h2>
+                <h2 class="section-title">5. Arithmetic/Logic Instructions</h2>
                 
                 <div class="key-concept">
-                    <h4>Bit Manipulation Operations</h4>
+                    <h4>Logic Operations in Computing</h4>
                     
-                    <p>These operations are fundamental to low-level programming:</p>
+                    <p>The AND, OR, and XOR operations can be extended to combine two strings of bits to produce a single output string:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operation</th>
+                                <th>Example</th>
+                                <th>Result</th>
+                                <th>Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AND</strong></td>
+                                <td>10011010 & 11001001</td>
+                                <td>10001000</td>
+                                <td>Clearing specific bits (masking)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OR</strong></td>
+                                <td>10011010 | 11001001</td>
+                                <td>11011011</td>
+                                <td>Setting specific bits to 1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XOR</strong></td>
+                                <td>10011010 ^ 11001001</td>
+                                <td>01010011</td>
+                                <td>Toggling/flipping bits</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="key-concept">
+                    <h4>Masking Techniques</h4>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-column">
+                            <h4>Using AND for Masking</h4>
+                            <p><strong>Purpose:</strong> Place 0s in specific parts of a bit pattern</p>
+                            <div class="example-box">
+                                <strong>Example:</strong><br>
+                                Mask: 00001111<br>
+                                Data: 10101010<br>
+                                Result: 00001010<br>
+                                <em>Only lower 4 bits preserved</em>
+                            </div>
+                            <p>With mask 00001111, we can conclude that the four most significant bits will be 0s, and the four least significant bits will be a copy of that part of the second operand.</p>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>Using OR for Setting Bits</h4>
+                            <p><strong>Purpose:</strong> Place 1s in specific positions</p>
+                            <div class="example-box">
+                                <strong>Example:</strong><br>
+                                Mask: 00100000<br>
+                                Data: 10101010<br>
+                                Result: 10101010 (unchanged)<br>
+                                OR: 00100000<br>
+                                Final: 10101010 OR 00100000 = 10101010<br>
+                                <em>Sets bit 5 to 1 if not already</em>
+                            </div>
+                            <p>Mask 00100000 with OR forces a 1 in the third bit from the high-order end.</p>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>Using XOR for Complementation</h4>
+                            <p><strong>Purpose:</strong> Form the complement (invert) of a byte</p>
+                            <div class="example-box">
+                                <strong>Example:</strong><br>
+                                Mask: 11111111<br>
+                                Data: 10101010<br>
+                                Result: 01010101<br>
+                                <em>Every bit is flipped</em>
+                            </div>
+                            <p>XOR with 11111111 produces the one's complement of the original byte.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="in-class-activity">
+                    <h2 class="section-title">🧮 Logic Operations Exercises</h2>
+                    
+                    <div class="activity-column">
+                        <h4>Exercise 3: Bit Isolation with Masking</h4>
+                        <p><strong>Problem:</strong> Suppose you want to isolate the middle four bits of a byte by placing 0s in the other four bits without disturbing the middle four bits.</p>
+                        <p><strong>Questions:</strong></p>
+                        <ol>
+                            <li>What mask must you use?</li>
+                            <li>What operation (AND, OR, XOR) should you use?</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="activity-solutions">
+                        <h4>✅ Exercise 3 Solution</h4>
+                        
+                        <div class="solution-step">
+                            <h5>Answer</h5>
+                            <p><strong>Mask:</strong> 00111100</p>
+                            <p><strong>Operation:</strong> AND</p>
+                            <p><strong>Explanation:</strong> The mask 00111100 has 1s in the middle four positions and 0s elsewhere. ANDing with this mask will preserve the middle four bits while clearing the other four bits to 0.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong><br>
+                                Data: 10101010<br>
+                                Mask: 00111100<br>
+                                AND Result: 00101000<br>
+                                <em>Middle 4 bits (1010) preserved, others cleared</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">6. Shift and Rotate Operations</h2>
+                
+                <div class="key-concept">
+                    <h4>Bit Movement Operations</h4>
+                    
+                    <p>Shift and rotate operations provide means for moving bits within a register. These operations are classified by direction of motion (right or left).</p>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-column">
+                            <h4>Rotation Operations</h4>
+                            <p>Bits moved out of one end reappear at the other end</p>
+                            <div class="example-box">
+                                <strong>Example: Rotate 65 (hex) right by 1 bit</strong><br>
+                                Original: 0110 0101 (65 hex)<br>
+                                After rotate right: 1011 0010 (B2 hex)<br>
+                                <em>Rightmost bit (1) moved to leftmost position</em>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-column">
+                            <h4>Logical Shift Operations</h4>
+                            <p>Bits shifted out are discarded; holes filled with 0s</p>
+                            <div class="example-box">
+                                <strong>Example: Logical shift right by 1 bit</strong><br>
+                                Original: 0110 0101 (65 hex)<br>
+                                After shift right: 0011 0010 (32 hex)<br>
+                                <em>Rightmost bit discarded, leftmost filled with 0</em>
+                            </div>
+                        </div>
+                    </div>
                     
                     <table>
                         <thead>
@@ -861,63 +620,95 @@
                                 <th>Symbol</th>
                                 <th>Description</th>
                                 <th>Example (Binary)</th>
+                                <th>Example (Hex)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>AND</strong></td>
-                                <td>&</td>
-                                <td>Both bits must be 1 to get 1</td>
-                                <td>1100 & 1010 = 1000</td>
+                                <td><strong>Rotate Right</strong></td>
+                                <td>ROR</td>
+                                <td>Bits move right, bit exiting right enters left</td>
+                                <td>0110 → 0011 (1-bit rotate)</td>
+                                <td>65 → B2 (1-bit rotate)</td>
                             </tr>
                             <tr>
-                                <td><strong>OR</strong></td>
-                                <td>|</td>
-                                <td>At least one bit must be 1 to get 1</td>
-                                <td>1100 | 1010 = 1110</td>
+                                <td><strong>Rotate Left</strong></td>
+                                <td>ROL</td>
+                                <td>Bits move left, bit exiting left enters right</td>
+                                <td>0110 → 1100 (1-bit rotate)</td>
+                                <td>65 → CA (1-bit rotate)</td>
                             </tr>
                             <tr>
-                                <td><strong>XOR</strong></td>
-                                <td>^</td>
-                                <td>Bits must be different to get 1</td>
-                                <td>1100 ^ 1010 = 0110</td>
+                                <td><strong>Logical Shift Right</strong></td>
+                                <td>SHR</td>
+                                <td>Bits move right, left filled with 0s</td>
+                                <td>0110 → 0011 (1-bit shift)</td>
+                                <td>65 → 32 (1-bit shift)</td>
                             </tr>
                             <tr>
-                                <td><strong>Shift Left</strong></td>
-                                <td><<</td>
-                                <td>Move bits left, fill with 0s</td>
-                                <td>0011 << 1 = 0110</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Shift Right</strong></td>
-                                <td>>></td>
-                                <td>Move bits right, fill with 0s</td>
-                                <td>1100 >> 1 = 0110</td>
+                                <td><strong>Logical Shift Left</strong></td>
+                                <td>SHL</td>
+                                <td>Bits move left, right filled with 0s</td>
+                                <td>0110 → 1100 (1-bit shift)</td>
+                                <td>65 → CA (1-bit shift)</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">7. Practical Programming Exercise</h2>
                 
                 <div class="in-class-activity">
-                    <h2 class="section-title">🔧 In-Class Activity: Bit Manipulation Challenge</h2>
+                    <h2 class="section-title">🔧 Programming Challenge: Bit Manipulation</h2>
                     
                     <div class="activity-column">
-                        <h4>🔍 Activity 2: Program Writing Challenge</h4>
-                        <p><strong>Objective:</strong> Write a machine language program that sets the most significant bit of a memory location to 1 without affecting other bits</p>
+                        <h4>Exercise 4: Setting the Most Significant Bit</h4>
+                        <p><strong>Objective:</strong> Using the machine language of Appendix C, write a program that places a 1 in the most significant bit of the memory cell whose address is A7 without modifying the remaining bits in the cell.</p>
+                        
+                        <div class="step-list">
+                            <p><strong>Requirements:</strong></p>
+                            <ul>
+                                <li>Load the current value from memory address A7</li>
+                                <li>Create a mask with MSB = 1 (binary 10000000 = hex 80)</li>
+                                <li>Use OR operation to set MSB to 1 while preserving other bits</li>
+                                <li>Store result back to memory address A7</li>
+                                <li>Include HALT instruction</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="activity-solutions">
-                        <h4>✅ Activity 2 Solution</h4>
+                        <h4>✅ Exercise 4 Solution</h4>
                         
                         <div class="solution-step">
                             <h5>Complete Program Solution:</h5>
                             <div class="code-block">
                                 <span class="comment"># Set MSB of memory address A7 to 1</span><br>
-                                <span class="hex">12A7</span> <span class="comment"># LOAD register 2 from A7</span><br>
-                                <span class="hex">2380</span> <span class="comment"># LOAD register 3 with 80 (MSB mask)</span><br>
+                                <span class="hex">12A7</span> <span class="comment"># LOAD register 2 from memory cell A7</span><br>
+                                <span class="hex">2380</span> <span class="comment"># LOAD register 3 with value 80 (MSB mask: 10000000)</span><br>
                                 <span class="hex">7023</span> <span class="comment"># OR register 2 and 3, result in register 0</span><br>
-                                <span class="hex">30A7</span> <span class="comment"># STORE register 0 to A7</span><br>
+                                <span class="hex">30A7</span> <span class="comment"># STORE register 0 to memory cell A7</span><br>
                                 <span class="hex">C000</span> <span class="comment"># HALT</span>
+                            </div>
+                            
+                            <h5>Step-by-Step Explanation:</h5>
+                            <div class="step-list">
+                                <ol>
+                                    <li><strong>12A7:</strong> Loads the current value from memory address A7 into register 2</li>
+                                    <li><strong>2380:</strong> Loads the hexadecimal value 80 (binary 10000000) into register 3. This mask has only the MSB set to 1.</li>
+                                    <li><strong>7023:</strong> Performs OR operation between register 2 (original value) and register 3 (mask). This sets the MSB to 1 while preserving all other bits.</li>
+                                    <li><strong>30A7:</strong> Stores the result from register 0 back to memory address A7</li>
+                                    <li><strong>C000:</strong> Halts program execution</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>Example Execution:</h5>
+                            <div class="example-box">
+                                <strong>If memory cell A7 contains:</strong> 01010101 (55 hex)<br>
+                                <strong>After OR with mask 10000000 (80 hex):</strong> 11010101 (D5 hex)<br>
+                                <strong>Result:</strong> MSB changed from 0 to 1, other bits unchanged
                             </div>
                         </div>
                     </div>
@@ -945,13 +736,15 @@
                 
                 <div class="homework-section">
                     <h4>Part 2: Machine Language Translation (30 points)</h4>
-                    <p>Using the machine language described in Appendix C (from the slides):</p>
+                    <p>Using the machine language described in Appendix C:</p>
                     <ol>
                         <li>Translate the following machine language instructions to English: (15 points)
                             <ul>
                                 <li>15B3</li>
                                 <li>702F</li>
                                 <li>C000</li>
+                                <li>2356</li>
+                                <li>8A03</li>
                             </ul>
                         </li>
                         <li>Write machine language instructions for the following operations: (15 points)
@@ -959,6 +752,8 @@
                                 <li>ADD the contents of register 4 and register 7, leaving the result in register 1</li>
                                 <li>JUMP to memory address 5C if the contents of register 3 equal the contents of register 0</li>
                                 <li>LOAD register number 3 with the value stored at memory address 56</li>
+                                <li>ROTATE register 2 four bits to the left</li>
+                                <li>AND register B with register 9, result in register 0</li>
                             </ul>
                         </li>
                     </ol>
@@ -991,7 +786,7 @@
 
             <section class="journey-section">
                 <h3>Ready to Continue Your Computing Journey?</h3>
-                <p>Understanding computer architecture is fundamental to all computing fields. This knowledge will help you understand how software interacts with hardware and forms the basis for more advanced topics.</p>
+                <p>Understanding computer architecture and machine language is fundamental to all computing fields. This knowledge forms the basis for understanding how software interacts with hardware and is essential for cybersecurity professionals who need to understand system vulnerabilities at the lowest level.</p>
                 
                 <div class="next-week">
                     <h4>📅 Next Week Preview: Storage Systems</h4>
