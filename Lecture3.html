@@ -228,15 +228,30 @@
                                 <td>RXY</td>
                                 <td>LOAD register R with the bit pattern found in memory cell at address XY</td>
                             </tr>
+							<tr>
+                                <td>2</td>
+                                <td>RXY</td>
+                                <td>LOAD register R with the value XY</td>
+                            </tr>
                             <tr>
                                 <td>3</td>
                                 <td>RXY</td>
                                 <td>STORE the bit pattern found in register R in memory cell at address XY</td>
                             </tr>
+							<tr>
+                                <td>4</td>
+                                <td>RST</td>
+                                <td>ADD the bit pattern in register S and T and leave result in register R</td>
+                            </tr>
                             <tr>
                                 <td>5</td>
                                 <td>RST</td>
                                 <td>ADD the bit pattern in register S and T (2's complement) and leave result in register R</td>
+                            </tr>
+							<tr>
+                                <td>6</td>
+                                <td>RST</td>
+                                <td>SUBTRACT the bit pattern in register T from the register S and leave result in register R</td>
                             </tr>
                             <tr>
                                 <td>7</td>
@@ -247,6 +262,11 @@
                                 <td>8</td>
                                 <td>R0S</td>
                                 <td>ROTATE register R one bit to the right S times</td>
+                            </tr>
+							<tr>
+                                <td>9</td>
+                                <td>RST</td>
+                                <td>XOR register S and T, leaving result in register R</td>
                             </tr>
                             <tr>
                                 <td>A</td>
