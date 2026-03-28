@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الامتحان النهائي – مقدمة في الحوسبة | هندسة الأمن السيبراني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Tajawal', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+            color: #202124;
+            line-height: 1.6;
+            direction: rtl;
+        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 40px 35px; }
+        .project-header {
+            background: linear-gradient(90deg, #0d6efd 0%, #0a58ca 100%);
+            color: white;
+            padding: 40px 35px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(13,110,253,0.2);
+        }
+        .project-header h1 { font-size: 2rem; margin-bottom: 12px; }
+        .project-header p { font-size: 1.2rem; opacity: 0.9; }
+        .main-card {
+            background: white;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+        }
+        .card-header {
+            background: #0d6efd;
+            color: white;
+            padding: 18px 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .card-header h2 { margin: 0; font-size: 1.5rem; }
+        .card-body { padding: 25px 30px; }
+        .question {
+            background: #f8f9fa;
+            border-right: 5px solid #198754;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 12px;
+        }
+        .question p { font-weight: 600; margin-bottom: 12px; font-size: 1.05rem; }
+        .radio-group { display: flex; gap: 25px; margin-top: 12px; flex-wrap: wrap; }
+        .radio-group label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .matching-row {
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .matching-row strong { min-width: 180px; font-weight: 600; }
+        select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            font-size: 0.95rem;
+            background: white;
+            font-family: inherit;
+            flex: 1;
+            min-width: 200px;
+        }
+        .print-value { display: none; }
+        .timer-bar {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 50px;
+            padding: 12px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-weight: bold;
+        }
+        .timer {
+            font-size: 1.6rem;
+            font-family: monospace;
+            background: #212529;
+            color: #ffc107;
+            padding: 5px 15px;
+            border-radius: 40px;
+            letter-spacing: 2px;
+        }
+        .btn {
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .btn-primary { background: #0d6efd; color: white; }
+        .btn-primary:hover { background: #0b5ed7; transform: translateY(-2px); }
+        .btn-success { background: #198754; color: white; }
+        .student-info-card {
+            background: #f8f9fa;
+            border: 2px solid #0d6efd;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .student-info-card .info-item { flex: 1; min-width: 200px; }
+        .student-info-card label { font-weight: bold; display: block; margin-bottom: 8px; color: #0d6efd; }
+        .student-info-card input { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1rem; }
+        footer { text-align: center; margin-top: 40px; padding: 25px; border-top: 1px solid #dee2e6; color: #5f6368; }
+        .loading { text-align: center; padding: 50px; font-size: 1.5rem; color: #0d6efd; }
+        .hidden-exam { display: none; }
+        .info-message {
+            background: #e9ecef;
+            padding: 40px;
+            text-align: center;
+            border-radius: 18px;
+            font-size: 1.2rem;
+            margin: 30px 0;
+        }
+        @media print {
+            .btn, .timer-bar, .student-info-card input, select, input[type="radio"], .no-print { display: none !important; }
+            .print-value { display: inline-block !important; background: transparent; border-bottom: 1px solid #000; padding: 2px 8px; margin-right: 8px; font-weight: normal; }
+            .matching-row .print-value { display: inline-block !important; }
+            .main-card, .question { break-inside: avoid; page-break-inside: avoid; }
+            body { background: white; }
+            .container { padding: 10px; }
+            .student-info-card { border: 1px solid #aaa; background: #fff; }
+        }
+        .button-group { display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="project-header">
+        <h1>الامتحان النهائي – مقدمة في الحوسبة</h1>
+        <p>ISSE 1201 | الكلية الجامعية للعلوم التطبيقية | الفصل الدراسي الأول 2026</p>
+        <p>أجب عن جميع الأسئلة. لديك ساعة واحدة فقط. بعد انتهاء الوقت لن يمكنك تعديل الإجابات.</p>
+    </div>
+
+    <div class="student-info-card">
+        <div class="info-item">
+            <label>الاسم الكامل:</label>
+            <input type="text" id="studentName" placeholder="أدخل اسمك">
+            <span class="print-value" data-for="studentName"></span>
+        </div>
+        <div class="info-item">
+            <label>الرقم الجامعي:</label>
+            <input type="text" id="studentId" placeholder="أدخل رقمك الجامعي">
+            <span class="print-value" data-for="studentId"></span>
+        </div>
+    </div>
+
+    <div class="timer-bar">
+        <div><i class="fas fa-hourglass-half"></i> الوقت المتبقي:</div>
+        <div class="timer" id="timerDisplay">01:00:00</div>
+        <button id="startExamBtn" class="btn btn-success"><i class="fas fa-play"></i> ابدأ الاختبار الآن</button>
+        <button id="printPdfBtnTop" class="btn btn-primary" disabled><i class="fas fa-print"></i> تحميل الحل كـ PDF</button>
+    </div>
+
+    <div id="examContainer" class="info-message">
+        <i class="fas fa-hourglass-start"></i> اضغط على "ابدأ الاختبار" لتحميل الأسئلة وبدء الوقت.
+    </div>
+
+    <div class="button-group no-print">
+        <button id="printPdfBtnBottom" class="btn btn-primary" disabled><i class="fas fa-print"></i> تحميل الحل كـ PDF</button>
+    </div>
+
+    <footer>
+        <p>بكالوريوس هندسة الأمن السيبراني | الكلية الجامعية للعلوم التطبيقية | الامتحان النهائي – مقدمة في الحوسبة</p>
+        <p>© 2026 - جميع الحقوق محفوظة. يمكن طباعة الإجابات بعد بدء الاختبار.</p>
+    </footer>
+</div>
+
+<script>
+    let examActive = false;
+    let timerInterval = null;
+    let endTime = null;
+    let examBuilt = false;
+
+    function disableAllInputs(disabled) {
+        const inputs = document.querySelectorAll('#examContainer input:not(#studentName):not(#studentId), #examContainer select');
+        inputs.forEach(el => disabled ? el.setAttribute('disabled', 'disabled') : el.removeAttribute('disabled'));
+    }
+
+    function updateTimerDisplay() {
+        if (!endTime) {
+            document.getElementById('timerDisplay').innerText = "01:00:00";
+            return;
+        }
+        const remaining = Math.max(0, endTime - Date.now());
+        const hours = Math.floor(remaining / 3600000);
+        const minutes = Math.floor((remaining % 3600000) / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+        document.getElementById('timerDisplay').innerText = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+    }
+
+    function startTimer(durationSeconds = 3600) {
+        const startTime = Date.now();
+        endTime = startTime + durationSeconds * 1000;
+        updateTimerDisplay();
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            const now = Date.now();
+            const remaining = Math.max(0, endTime - now);
+            if (remaining <= 0) {
+                clearInterval(timerInterval);
+                disableAllInputs(true);
+                alert("انتهى الوقت! لا يمكنك تعديل الإجابات بعد الآن. يمكنك تحميل الحل كـ PDF.");
+                examActive = false;
+                localStorage.removeItem('examStartTime');
+                document.getElementById('startExamBtn').disabled = true;
+                document.getElementById('printPdfBtnTop').disabled = false;
+                document.getElementById('printPdfBtnBottom').disabled = false;
+            }
+            updateTimerDisplay();
+        }, 1000);
+    }
+
+    function restoreTimerIfNeeded() {
+        const savedStart = localStorage.getItem('examStartTime');
+        if (savedStart) {
+            const start = parseInt(savedStart, 10);
+            const now = Date.now();
+            const elapsed = now - start;
+            const duration = 3600000;
+            if (elapsed < duration) {
+                examActive = true;
+                endTime = start + duration;
+                updateTimerDisplay();
+                if (timerInterval) clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    const remaining = Math.max(0, endTime - Date.now());
+                    if (remaining <= 0) {
+                        clearInterval(timerInterval);
+                        disableAllInputs(true);
+                        alert("انتهى الوقت! لا يمكن تعديل الإجابات.");
+                        examActive = false;
+                        localStorage.removeItem('examStartTime');
+                        document.getElementById('startExamBtn').disabled = true;
+                        document.getElementById('printPdfBtnTop').disabled = false;
+                        document.getElementById('printPdfBtnBottom').disabled = false;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+                disableAllInputs(false);
+                document.getElementById('startExamBtn').disabled = true;
+                document.getElementById('printPdfBtnTop').disabled = false;
+                document.getElementById('printPdfBtnBottom').disabled = false;
+                return true; // exam already active
+            } else {
+                localStorage.removeItem('examStartTime');
+                document.getElementById('startExamBtn').disabled = false;
+                document.getElementById('printPdfBtnTop').disabled = true;
+                document.getElementById('printPdfBtnBottom').disabled = true;
+            }
+        } else {
+            document.getElementById('startExamBtn').disabled = false;
+            document.getElementById('printPdfBtnTop').disabled = true;
+            document.getElementById('printPdfBtnBottom').disabled = true;
+        }
+        return false;
+    }
+
+    function bindStudentInfoPrint() {
+        const nameInput = document.getElementById('studentName');
+        const idInput = document.getElementById('studentId');
+        const nameSpan = document.querySelector('.print-value[data-for="studentName"]');
+        const idSpan = document.querySelector('.print-value[data-for="studentId"]');
+        if (nameInput && nameSpan) {
+            nameInput.addEventListener('input', () => { nameSpan.innerText = nameInput.value; });
+            nameSpan.innerText = nameInput.value;
+        }
+        if (idInput && idSpan) {
+            idInput.addEventListener('input', () => { idSpan.innerText = idInput.value; });
+            idSpan.innerText = idInput.value;
+        }
+    }
+
+    async function buildExamFromXML() {
+        const container = document.getElementById('examContainer');
+        container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-pulse"></i> جاري تحميل الأسئلة من final.xml ...</div>';
+        try {
+            const response = await fetch('final.xml');
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const xmlText = await response.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+            const questions = xmlDoc.querySelectorAll('question');
+            if (questions.length === 0) throw new Error('لا توجد أسئلة في الملف');
+
+            container.innerHTML = '';
+            let tfCounter = 0, mcCounter = 0, matchCounter = 0;
+
+            for (let q of questions) {
+                const type = q.getAttribute('type');
+                const questionTextElem = q.querySelector('questiontext text');
+                let questionText = questionTextElem ? questionTextElem.textContent : 'سؤال بدون نص';
+                questionText = questionText.replace(/<!\[CDATA\[(.*)\]\]>/g, '$1');
+
+                const card = document.createElement('div');
+                card.className = 'main-card';
+
+                let headerTitle = '';
+                if (type === 'truefalse') headerTitle = `سؤال صح/خطأ ${++tfCounter}`;
+                else if (type === 'multichoice') headerTitle = `اختيار من متعدد ${++mcCounter}`;
+                else if (type === 'matching') headerTitle = `سؤال مطابقة ${++matchCounter}`;
+                else continue;
+
+                const header = document.createElement('div');
+                header.className = 'card-header';
+                header.innerHTML = `<h2>${headerTitle}</h2>`;
+                card.appendChild(header);
+
+                const body = document.createElement('div');
+                body.className = 'card-body';
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `<p>${questionText}</p>`;
+
+                if (type === 'truefalse') {
+                    const radioGroup = document.createElement('div');
+                    radioGroup.className = 'radio-group';
+                    const nameAttr = `tf_${tfCounter}`;
+                    radioGroup.innerHTML = `
+                        <label><input type="radio" name="${nameAttr}" value="صحيح" id="${nameAttr}_true"> صحيح</label>
+                        <label><input type="radio" name="${nameAttr}" value="خطأ" id="${nameAttr}_false"> خطأ</label>
+                    `;
+                    const printSpan = document.createElement('span');
+                    printSpan.className = 'print-value';
+                    printSpan.id = `${nameAttr}_print`;
+                    printSpan.setAttribute('data-for', nameAttr);
+                    radioGroup.querySelectorAll('input').forEach(radio => {
+                        radio.addEventListener('change', () => { if (radio.checked) printSpan.innerText = radio.value; });
+                    });
+                    questionDiv.appendChild(radioGroup);
+                    questionDiv.appendChild(printSpan);
+                }
+                else if (type === 'multichoice') {
+                    const answers = q.querySelectorAll('answer');
+                    const answerItems = [];
+                    answers.forEach(ans => {
+                        let txt = ans.querySelector('text')?.textContent || '';
+                        txt = txt.replace(/<!\[CDATA\[(.*)\]\]>/g, '$1');
+                        answerItems.push({ text: txt });
+                    });
+                    const nameAttr = `mc_${mcCounter}`;
+                    const radioGroup = document.createElement('div');
+                    radioGroup.className = 'radio-group';
+                    answerItems.forEach((item, idx) => {
+                        const id = `${nameAttr}_${idx}`;
+                        const label = document.createElement('label');
+                        label.innerHTML = `<input type="radio" name="${nameAttr}" value="${item.text.replace(/"/g, '&quot;')}" id="${id}"> ${item.text}`;
+                        radioGroup.appendChild(label);
+                    });
+                    const printSpan = document.createElement('span');
+                    printSpan.className = 'print-value';
+                    printSpan.id = `${nameAttr}_print`;
+                    printSpan.setAttribute('data-for', nameAttr);
+                    radioGroup.querySelectorAll('input').forEach(radio => {
+                        radio.addEventListener('change', () => { if (radio.checked) printSpan.innerText = radio.value; });
+                    });
+                    questionDiv.appendChild(radioGroup);
+                    questionDiv.appendChild(printSpan);
+                }
+                else if (type === 'matching') {
+                    const subquestions = q.querySelectorAll('subquestion');
+                    const allAnswers = [];
+                    subquestions.forEach(sq => {
+                        const ansElem = sq.querySelector('answer text');
+                        if (ansElem) {
+                            let ans = ansElem.textContent;
+                            ans = ans.replace(/<!\[CDATA\[(.*)\]\]>/g, '$1');
+                            if (!allAnswers.includes(ans)) allAnswers.push(ans);
+                        }
+                    });
+                    const matchDiv = document.createElement('div');
+                    matchDiv.className = 'matching-container';
+                    subquestions.forEach((sq, idx) => {
+                        let subText = sq.querySelector('text')?.textContent || 'فرع غير معرف';
+                        subText = subText.replace(/<!\[CDATA\[(.*)\]\]>/g, '$1');
+                        const selectId = `match_${matchCounter}_${idx}`;
+                        const row = document.createElement('div');
+                        row.className = 'matching-row';
+                        row.innerHTML = `<strong>${subText}</strong>`;
+                        const select = document.createElement('select');
+                        select.id = selectId;
+                        const defaultOption = document.createElement('option');
+                        defaultOption.value = '';
+                        defaultOption.textContent = '-- اختر الإجابة --';
+                        select.appendChild(defaultOption);
+                        allAnswers.forEach(ans => {
+                            const opt = document.createElement('option');
+                            opt.value = ans;
+                            opt.textContent = ans;
+                            select.appendChild(opt);
+                        });
+                        const printSpan = document.createElement('span');
+                        printSpan.className = 'print-value';
+                        printSpan.id = `${selectId}_print`;
+                        printSpan.setAttribute('data-for', selectId);
+                        select.addEventListener('change', () => { printSpan.innerText = select.value; });
+                        row.appendChild(select);
+                        row.appendChild(printSpan);
+                        matchDiv.appendChild(row);
+                    });
+                    questionDiv.appendChild(matchDiv);
+                }
+
+                body.appendChild(questionDiv);
+                card.appendChild(body);
+                container.appendChild(card);
+            }
+
+            // إضافة زر الطباعة السفلي بعد الأسئلة
+            const bottomPrintDiv = document.createElement('div');
+            bottomPrintDiv.className = 'button-group no-print';
+            bottomPrintDiv.innerHTML = `<button id="printPdfBtnBottomDynamic" class="btn btn-primary" disabled><i class="fas fa-print"></i> تحميل الحل كـ PDF</button>`;
+            container.appendChild(bottomPrintDiv);
+            const bottomBtn = document.getElementById('printPdfBtnBottomDynamic');
+            if (bottomBtn) {
+                bottomBtn.disabled = true;
+                bottomBtn.addEventListener('click', () => { if (examActive) window.print(); else alert("لا يمكن طباعة الحل قبل بدء الاختبار."); });
+                // ربطه مع الأزرار الأخرى
+                window.bottomPrintBtn = bottomBtn;
+            }
+
+            examBuilt = true;
+            return true;
+        } catch (err) {
+            console.error(err);
+            container.innerHTML = `<div class="info-message" style="color:red;"><i class="fas fa-exclamation-triangle"></i> فشل تحميل الأسئلة: ${err.message}<br>تأكد من وجود ملف final.xml في نفس المجلد وأن الصفحة تعمل عبر خادم HTTP (مثل Live Server).</div>`;
+            return false;
+        }
+    }
+
+    async function startExam() {
+        if (examActive) return;
+        // بناء الأسئلة إذا لم تكن مبنية مسبقاً
+        if (!examBuilt) {
+            const success = await buildExamFromXML();
+            if (!success) return;
+        }
+        // تمكين جميع المدخلات
+        disableAllInputs(false);
+        // بدء المؤقت
+        startTimer(3600);
+        examActive = true;
+        // تعطيل زر البدء وتمكين أزرار الطباعة
+        document.getElementById('startExamBtn').disabled = true;
+        document.getElementById('printPdfBtnTop').disabled = false;
+        if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
+        // حفظ بداية الوقت
+        localStorage.setItem('examStartTime', Date.now());
+    }
+
+    // تهيئة الصفحة: استعادة المؤقت إذا كان الاختبار قد بدأ سابقاً
+    window.onload = async () => {
+        bindStudentInfoPrint();
+        const alreadyActive = restoreTimerIfNeeded();
+        if (alreadyActive) {
+            // إذا كان الاختبار نشطاً بالفعل، نبني الأسئلة ونعرضها
+            await buildExamFromXML();
+            disableAllInputs(false);
+            examActive = true;
+            document.getElementById('startExamBtn').disabled = true;
+            document.getElementById('printPdfBtnTop').disabled = false;
+            if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
+        } else {
+            // غير نشط، نعرض رسالة الانتظار فقط
+            document.getElementById('examContainer').innerHTML = '<div class="info-message"><i class="fas fa-hourglass-start"></i> اضغط على "ابدأ الاختبار" لتحميل الأسئلة وبدء الوقت.</div>';
+            examBuilt = false;
+        }
+        document.getElementById('startExamBtn').addEventListener('click', startExam);
+        document.getElementById('printPdfBtnTop').addEventListener('click', () => {
+            if (examActive) window.print();
+            else alert("لا يمكن طباعة الحل قبل بدء الاختبار.");
+        });
+        // الزر السفلي سيضاف ديناميكياً عند بناء الأسئلة، لكننا نضيف مستمعاً للزر العلوي فقط هنا
+    };
+</script>
+</body>
+</html>

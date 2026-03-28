@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!-- =================================================== -->
+  <!-- FINAL EXAM: Introduction to Computing (ISSE 1201)   -->
+  <!-- Total: 70 Questions                                  -->
+  <!-- Types: True/False, Multiple Choice, Ordering/Matching -->
+  =================================================== -->
+
+  <question type="category">
+    <category>
+      <text>$course$/top/Final Exam - Introduction to Computing</text>
+    </category>
+  </question>
+
+  <!-- ===================== SECTION 1: TRUE/FALSE (20 questions) ===================== -->
+  <question type="truefalse">
+    <name><text>TF1: Computer Definition</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A computer is an electronic device that accepts data, processes it, produces results, and stores them for future use.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF2: RAM Volatility</text></name>
+    <questiontext format="html"><text><![CDATA[<p>RAM (Random Access Memory) is non‑volatile, meaning it retains data even when the power is turned off.</p>]]></text></questiontext>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF3: Binary System</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The binary system uses only digits 0 and 1, and it is the foundation of all data representation in computers.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF4: ALU Function</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The Control Unit (CU) performs arithmetic and logical operations such as addition and comparison.</p>]]></text></questiontext>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF5: Bus Width</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The wider a bus, the more bits it can transfer simultaneously, which generally increases performance.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF6: Hexadecimal Shorthand</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Hexadecimal is a base‑16 system often used to represent binary values in a more compact form.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF7: ASCII and Unicode</text></name>
+    <questiontext format="html"><text><![CDATA[<p>ASCII is a character encoding that supports all languages of the world, including Arabic and Chinese.</p>]]></text></questiontext>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF8: AND Gate Output</text></name>
+    <questiontext format="html"><text><![CDATA[<p>For an AND gate, the output is 1 only when both inputs are 1.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF9: Network Switch</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A switch operates at the network layer (Layer 3) and makes forwarding decisions based on IP addresses.</p>]]></text></questiontext>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF10: Peer-to-Peer Model</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In a peer‑to‑peer (P2P) network, each node can act as both a client and a server.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF11: DNS Purpose</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The Domain Name System (DNS) translates domain names (e.g., www.example.com) into IP addresses.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF12: HTTP vs HTTPS</text></name>
+    <questiontext format="html"><text><![CDATA[<p>HTTPS is the same as HTTP but adds an encryption layer (SSL/TLS) for secure communication.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF13: Machine Cycle Order</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The machine cycle consists of three steps: fetch, execute, and store (in that order).</p>]]></text></questiontext>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF14: Registers Speed</text></name>
+    <questiontext format="html"><text><![CDATA[<p>CPU registers are the fastest type of storage in a computer system, even faster than cache memory.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF15: WAN vs LAN</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A Local Area Network (LAN) typically covers a larger geographical area than a Wide Area Network (WAN).</p>]]></text></questiontext>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF16: Bus Topology</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In a bus topology, all devices share the same communication line, which can create a single point of failure.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF17: ROM Usage</text></name>
+    <questiontext format="html"><text><![CDATA[<p>ROM (Read‑Only Memory) is typically used to store the computer’s startup instructions (BIOS/UEFI).</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF18: Logical Shift</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A logical shift left operation moves bits to the left and fills the vacated positions with 1s.</p>]]></text></questiontext>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF19: Opcode and Operand</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Every machine language instruction consists of an opcode (the operation) and an operand (the data or address).</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <question type="truefalse">
+    <name><text>TF20: Firewall Function</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A firewall is a hardware or software system that monitors and controls incoming/outgoing network traffic based on security rules.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
+
+  <!-- ===================== SECTION 2: MULTIPLE CHOICE (35 questions) ===================== -->
+  <question type="multichoice">
+    <name><text>MC1: Computer System Components</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following are the three main components of a computer system?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text>Hardware, Software, Users</text></answer>
+    <answer fraction="0"><text>CPU, RAM, Hard Disk</text></answer>
+    <answer fraction="0"><text>Input, Output, Storage</text></answer>
+    <answer fraction="0"><text>Applications, Operating System, Drivers</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC2: ALU Primary Function</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the primary function of the Arithmetic Logic Unit (ALU)?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text>Perform arithmetic and logical operations</text></answer>
+    <answer fraction="0"><text>Control the flow of data inside the CPU</text></answer>
+    <answer fraction="0"><text>Store frequently used instructions</text></answer>
+    <answer fraction="0"><text>Manage communication with peripherals</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC3: Binary to Decimal</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the decimal equivalent of the binary number 1011?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>9</text></answer>
+    <answer fraction="0"><text>10</text></answer>
+    <answer fraction="100"><text>11</text></answer>
+    <answer fraction="0"><text>12</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC4: Hexadecimal Digit F</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the binary representation of the hexadecimal digit 'F'?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>1010</text></answer>
+    <answer fraction="0"><text>1100</text></answer>
+    <answer fraction="100"><text>1111</text></answer>
+    <answer fraction="0"><text>0001</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC5: Memory Capacity</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Approximately how many bytes are in one gigabyte (GB)?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>1 thousand bytes</text></answer>
+    <answer fraction="0"><text>1 million bytes</text></answer>
+    <answer fraction="100"><text>1 billion bytes</text></answer>
+    <answer fraction="0"><text>1 trillion bytes</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC6: XOR Gate Output</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The XOR gate produces a 1 (true) when:</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Both inputs are 1</text></answer>
+    <answer fraction="0"><text>Both inputs are 0</text></answer>
+    <answer fraction="100"><text>The two inputs are different</text></answer>
+    <answer fraction="0"><text>At least one input is 1</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC7: Network Device - Router</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which device connects multiple networks and forwards data based on IP addresses?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Switch</text></answer>
+    <answer fraction="100"><text>Router</text></answer>
+    <answer fraction="0"><text>Bridge</text></answer>
+    <answer fraction="0"><text>Repeater</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC8: HTML Tag for Link</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which HTML tag is used to create a hyperlink?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>&lt;link&gt;</text></answer>
+    <answer fraction="100"><text>&lt;a&gt;</text></answer>
+    <answer fraction="0"><text>&lt;href&gt;</text></answer>
+    <answer fraction="0"><text>&lt;url&gt;</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC9: CPU Component</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which component of the CPU is responsible for directing the operations and managing the flow of data?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Arithmetic Logic Unit (ALU)</text></answer>
+    <answer fraction="100"><text>Control Unit (CU)</text></answer>
+    <answer fraction="0"><text>Cache Memory</text></answer>
+    <answer fraction="0"><text>Registers</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC10: LAN Topology with Central Device</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In which topology do all devices connect to a central device (such as a switch or access point)?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Bus topology</text></answer>
+    <answer fraction="100"><text>Star topology</text></answer>
+    <answer fraction="0"><text>Ring topology</text></answer>
+    <answer fraction="0"><text>Mesh topology</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC11: Two's Complement Range</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Using 4-bit two's complement representation, what is the range of representable integers?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>0 to 15</text></answer>
+    <answer fraction="0"><text>-7 to +7</text></answer>
+    <answer fraction="100"><text>-8 to +7</text></answer>
+    <answer fraction="0"><text>-15 to +15</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC12: Storage Device</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is considered a secondary storage device?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>RAM</text></answer>
+    <answer fraction="0"><text>Registers</text></answer>
+    <answer fraction="100"><text>Solid State Drive (SSD)</text></answer>
+    <answer fraction="0"><text>Cache</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC13: Protocol for Web Pages</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which protocol is used by web browsers to request and receive web pages?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>FTP</text></answer>
+    <answer fraction="100"><text>HTTP/HTTPS</text></answer>
+    <answer fraction="0"><text>SMTP</text></answer>
+    <answer fraction="0"><text>POP3</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC14: Masking with AND</text></name>
+    <questiontext format="html"><text><![CDATA[<p>You want to clear (set to 0) the upper 4 bits of a byte while preserving the lower 4 bits. Which mask should you use with an AND operation?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>11110000</text></answer>
+    <answer fraction="100"><text>00001111</text></answer>
+    <answer fraction="0"><text>11111111</text></answer>
+    <answer fraction="0"><text>00000000</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC15: Fetch-Decode-Execute</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the correct order of the machine cycle?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Decode → Fetch → Execute</text></answer>
+    <answer fraction="0"><text>Execute → Decode → Fetch</text></answer>
+    <answer fraction="100"><text>Fetch → Decode → Execute</text></answer>
+    <answer fraction="0"><text>Fetch → Execute → Decode</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC16: Character Encoding</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which character encoding standard uses 7 bits to represent 128 characters and is commonly used for English text?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text>ASCII</text></answer>
+    <answer fraction="0"><text>Unicode</text></answer>
+    <answer fraction="0"><text>EBCDIC</text></answer>
+    <answer fraction="0"><text>UTF-8</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC17: IP Address Example</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is a valid IPv4 address in dotted decimal notation?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>2001:0db8:85a3::8a2e:0370:7334</text></answer>
+    <answer fraction="100"><text>192.168.1.1</text></answer>
+    <answer fraction="0"><text>http://www.example.com</text></answer>
+    <answer fraction="0"><text>256.100.50.25</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC18: Client-Server Model</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In the client‑server model, what is a primary characteristic?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>All nodes have equal responsibilities.</text></answer>
+    <answer fraction="100"><text>A central server provides services to multiple clients.</text></answer>
+    <answer fraction="0"><text>Nodes communicate directly without a central device.</text></answer>
+    <answer fraction="0"><text>It is only used for file sharing.</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC19: Program Counter (PC)</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the purpose of the Program Counter (PC) register?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>It stores the result of arithmetic operations.</text></answer>
+    <answer fraction="0"><text>It holds the current instruction being executed.</text></answer>
+    <answer fraction="100"><text>It contains the address of the next instruction to be executed.</text></answer>
+    <answer fraction="0"><text>It manages the stack pointer.</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC20: Optical Storage</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is an example of optical storage media?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Hard Disk Drive (HDD)</text></answer>
+    <answer fraction="0"><text>Solid State Drive (SSD)</text></answer>
+    <answer fraction="100"><text>DVD (Digital Versatile Disc)</text></answer>
+    <answer fraction="0"><text>USB Flash Drive</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC21: Logical Shift Right</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the result of a logical shift right by 1 bit on the binary number 1100 1010?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>1100 1010</text></answer>
+    <answer fraction="0"><text>1110 0101</text></answer>
+    <answer fraction="100"><text>0110 0101</text></answer>
+    <answer fraction="0"><text>1001 0100</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC22: Bus Topology Vulnerability</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is a major security concern in a bus topology network?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Central device becomes a single point of failure.</text></answer>
+    <answer fraction="100"><text>All devices can potentially see all traffic, making eavesdropping easier.</text></answer>
+    <answer fraction="0"><text>It requires complex routing tables.</text></answer>
+    <answer fraction="0"><text>It cannot be extended beyond a short distance.</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC23: Decimal to Hex</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the hexadecimal representation of the decimal number 255?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>FF</text></answer>
+    <answer fraction="100"><text>FF</text></answer>
+    <answer fraction="0"><text>F0</text></answer>
+    <answer fraction="0"><text>0F</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC24: Firewall Purpose</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the main purpose of a firewall in a network?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>To increase internet speed</text></answer>
+    <answer fraction="0"><text>To store backup copies of data</text></answer>
+    <answer fraction="100"><text>To monitor and control incoming/outgoing traffic based on security rules</text></answer>
+    <answer fraction="0"><text>To translate domain names to IP addresses</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC25: Instruction Register (IR)</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What does the Instruction Register (IR) hold?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>The address of the next instruction</text></answer>
+    <answer fraction="100"><text>The current instruction being executed</text></answer>
+    <answer fraction="0"><text>The result of the last arithmetic operation</text></answer>
+    <answer fraction="0"><text>The memory address of the data</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC26: URL Structure</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In a URL like https://www.ucas.edu.ps/index.html, what does "https" represent?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text>The protocol used to access the resource</text></answer>
+    <answer fraction="0"><text>The domain name of the server</text></answer>
+    <answer fraction="0"><text>The path to the file</text></answer>
+    <answer fraction="0"><text>The port number</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC27: WAN Example</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is an example of a Wide Area Network (WAN)?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>A network connecting computers in one building</text></answer>
+    <answer fraction="0"><text>A wireless network in a coffee shop</text></answer>
+    <answer fraction="100"><text>The Internet</text></answer>
+    <answer fraction="0"><text>A network in a single university campus</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC28: Primary Storage</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is considered primary storage (main memory)?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Hard Disk Drive</text></answer>
+    <answer fraction="0"><text>Solid State Drive</text></answer>
+    <answer fraction="100"><text>RAM</text></answer>
+    <answer fraction="0"><text>DVD</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC29: Logical OR Purpose</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The OR operation is commonly used to:</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Clear specific bits to 0</text></answer>
+    <answer fraction="100"><text>Set specific bits to 1</text></answer>
+    <answer fraction="0"><text>Toggle specific bits</text></answer>
+    <answer fraction="0"><text>Swap two bytes</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC30: Operating System Role</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following best describes the role of an operating system?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>It performs calculations for scientific applications.</text></answer>
+    <answer fraction="100"><text>It manages hardware resources and provides services for application software.</text></answer>
+    <answer fraction="0"><text>It is used to design web pages.</text></answer>
+    <answer fraction="0"><text>It stores user data permanently.</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC31: ASCII 'A' Value</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In ASCII, the capital letter 'A' is represented by the decimal value 65. What is its binary representation?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>1000001</text></answer>
+    <answer fraction="100"><text>1000001</text></answer>
+    <answer fraction="0"><text>1100001</text></answer>
+    <answer fraction="0"><text>01000001</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC32: Packet Switching</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is a primary characteristic of the Internet's communication method?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Circuit switching (dedicated path)</text></answer>
+    <answer fraction="100"><text>Packet switching</text></answer>
+    <answer fraction="0"><text>Broadcast switching</text></answer>
+    <answer fraction="0"><text>Message switching</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC33: SQL Injection</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which type of attack involves inserting malicious code into a web application's database query?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>Cross‑Site Scripting (XSS)</text></answer>
+    <answer fraction="100"><text>SQL Injection</text></answer>
+    <answer fraction="0"><text>DNS Spoofing</text></answer>
+    <answer fraction="0"><text>Man‑in‑the‑Middle</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC34: Binary Addition</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the result of adding binary 1011 and 0110?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>10001</text></answer>
+    <answer fraction="100"><text>10001</text></answer>
+    <answer fraction="0"><text>1111</text></answer>
+    <answer fraction="0"><text>1101</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>MC35: HTML Tag for Image</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which HTML tag is used to embed an image?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text>&lt;image&gt;</text></answer>
+    <answer fraction="100"><text>&lt;img&gt;</text></answer>
+    <answer fraction="0"><text>&lt;src&gt;</text></answer>
+    <answer fraction="0"><text>&lt;picture&gt;</text></answer>
+  </question>
+
+  <!-- ===================== SECTION 3: ORDERING/MATCHING (15 questions) ===================== -->
+  <question type="matching">
+    <name><text>MATCH1: Machine Cycle Steps Order</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the machine cycle step with its correct position in the order (1 = first, 4 = last).</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>First step</text><answer><text>Fetch</text></answer></subquestion>
+    <subquestion><text>Second step</text><answer><text>Decode</text></answer></subquestion>
+    <subquestion><text>Third step</text><answer><text>Execute</text></answer></subquestion>
+    <subquestion><text>Fourth step</text><answer><text>Store (Write back)</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH2: Number Systems</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match each number system with its base.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>Binary</text><answer><text>Base 2</text></answer></subquestion>
+    <subquestion><text>Octal</text><answer><text>Base 8</text></answer></subquestion>
+    <subquestion><text>Decimal</text><answer><text>Base 10</text></answer></subquestion>
+    <subquestion><text>Hexadecimal</text><answer><text>Base 16</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH3: CPU Components</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match each CPU component with its primary function.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>ALU</text><answer><text>Performs arithmetic and logic operations</text></answer></subquestion>
+    <subquestion><text>Control Unit</text><answer><text>Directs operations and manages data flow</text></answer></subquestion>
+    <subquestion><text>Registers</text><answer><text>Small, fast storage locations inside the CPU</text></answer></subquestion>
+    <subquestion><text>Program Counter</text><answer><text>Holds address of next instruction</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH4: Network Topologies</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the network topology with its description.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>Bus topology</text><answer><text>All devices share a single communication line</text></answer></subquestion>
+    <subquestion><text>Star topology</text><answer><text>All devices connect to a central hub/switch</text></answer></subquestion>
+    <subquestion><text>Mesh topology</text><answer><text>Each device is connected to many others</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH5: Network Devices</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the network device with its primary OSI layer.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>Repeater</text><answer><text>Physical Layer (Layer 1)</text></answer></subquestion>
+    <subquestion><text>Switch</text><answer><text>Data Link Layer (Layer 2)</text></answer></subquestion>
+    <subquestion><text>Router</text><answer><text>Network Layer (Layer 3)</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH6: Logic Gates Truth Tables</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match each logic gate with its output when both inputs are 1 (A=1, B=1).</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>AND</text><answer><text>1</text></answer></subquestion>
+    <subquestion><text>OR</text><answer><text>1</text></answer></subquestion>
+    <subquestion><text>XOR</text><answer><text>0</text></answer></subquestion>
+    <subquestion><text>NAND</text><answer><text>0</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH7: Storage Types</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the storage type with its volatility characteristic.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>RAM</text><answer><text>Volatile (loses data when power off)</text></answer></subquestion>
+    <subquestion><text>ROM</text><answer><text>Non-volatile (retains data)</text></answer></subquestion>
+    <subquestion><text>SSD</text><answer><text>Non-volatile (retains data)</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH8: Internet Protocols</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match each protocol with its primary purpose.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>HTTP/HTTPS</text><answer><text>Transfer web pages</text></answer></subquestion>
+    <subquestion><text>FTP</text><answer><text>Transfer files</text></answer></subquestion>
+    <subquestion><text>SMTP</text><answer><text>Send email</text></answer></subquestion>
+    <subquestion><text>DNS</text><answer><text>Translate domain names to IP addresses</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH9: Binary Arithmetic</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the binary operation with its correct result (assume 4‑bit values).</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>1010 + 0101</text><answer><text>1111</text></answer></subquestion>
+    <subquestion><text>1100 AND 1010</text><answer><text>1000</text></answer></subquestion>
+    <subquestion><text>1100 OR 1010</text><answer><text>1110</text></answer></subquestion>
+    <subquestion><text>1100 XOR 1010</text><answer><text>0110</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH10: Memory Hierarchy Order</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Order the memory types from fastest to slowest (1 = fastest).</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>Fastest</text><answer><text>CPU Registers</text></answer></subquestion>
+    <subquestion><text>Second fastest</text><answer><text>L1 Cache</text></answer></subquestion>
+    <subquestion><text>Third fastest</text><answer><text>RAM</text></answer></subquestion>
+    <subquestion><text>Slowest</text><answer><text>Hard Disk Drive</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH11: Network Classifications</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match each network type with its typical geographic scope.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>LAN</text><answer><text>Single building or campus</text></answer></subquestion>
+    <subquestion><text>MAN</text><answer><text>City‑wide</text></answer></subquestion>
+    <subquestion><text>WAN</text><answer><text>Country or worldwide</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH12: Security Threats</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the security threat with its description.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>IP Spoofing</text><answer><text>Forging source IP addresses to hide identity</text></answer></subquestion>
+    <subquestion><text>DNS Poisoning</text><answer><text>Corrupting DNS cache to redirect traffic</text></answer></subquestion>
+    <subquestion><text>SQL Injection</text><answer><text>Inserting malicious code into database queries</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH13: HTML Tags</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the HTML tag with its purpose.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>&lt;h1&gt;</text><answer><text>Heading level 1</text></answer></subquestion>
+    <subquestion><text>&lt;p&gt;</text><answer><text>Paragraph</text></answer></subquestion>
+    <subquestion><text>&lt;a href="..."&gt;</text><answer><text>Hyperlink</text></answer></subquestion>
+    <subquestion><text>&lt;img src="..."&gt;</text><answer><text>Image</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH14: Machine Language Instruction Components</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the instruction part with its definition.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>Opcode</text><answer><text>Indicates which operation to perform</text></answer></subquestion>
+    <subquestion><text>Operand</text><answer><text>Specifies the data or address for the operation</text></answer></subquestion>
+  </question>
+
+  <question type="matching">
+    <name><text>MATCH15: OSI Model Layers (Basic)</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match the OSI layer with a device or protocol that operates at that layer.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>Physical Layer (Layer 1)</text><answer><text>Repeater, Hub</text></answer></subquestion>
+    <subquestion><text>Data Link Layer (Layer 2)</text><answer><text>Switch, MAC address</text></answer></subquestion>
+    <subquestion><text>Network Layer (Layer 3)</text><answer><text>Router, IP address</text></answer></subquestion>
+    <subquestion><text>Transport Layer (Layer 4)</text><answer><text>TCP, UDP</text></answer></subquestion>
+    <subquestion><text>Application Layer (Layer 7)</text><answer><text>HTTP, FTP, SMTP</text></answer></subquestion>
+  </question>
+
+</quiz>
