@@ -49,7 +49,7 @@
             padding: 20px;
             margin: 25px 0;
             border-radius: 12px;
-            direction: ltr;          /* الأسئلة من اليسار لليمين */
+            direction: ltr;
             text-align: left;
         }
         .question p {
@@ -153,7 +153,6 @@
         .student-info-card input { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1rem; }
         footer { text-align: center; margin-top: 40px; padding: 25px; border-top: 1px solid #dee2e6; color: #5f6368; }
         .loading { text-align: center; padding: 50px; font-size: 1.5rem; color: #0d6efd; }
-        .hidden-exam { display: none; }
         .info-message {
             background: #e9ecef;
             padding: 40px;
@@ -350,9 +349,9 @@
                 card.className = 'main-card';
 
                 let headerTitle = '';
-                if (type === 'truefalse') headerTitle = `سؤال صح/خطأ ${++tfCounter}`;
-                else if (type === 'multichoice') headerTitle = `اختيار من متعدد ${++mcCounter}`;
-                else if (type === 'matching') headerTitle = `سؤال مطابقة ${++matchCounter}`;
+                if (type === 'truefalse') headerTitle = `True/False Question ${++tfCounter}`;
+                else if (type === 'multichoice') headerTitle = `Multiple Choice ${++mcCounter}`;
+                else if (type === 'matching') headerTitle = `Matching Question ${++matchCounter}`;
                 else continue;
 
                 const header = document.createElement('div');
@@ -370,9 +369,10 @@
                     const radioGroup = document.createElement('div');
                     radioGroup.className = 'radio-group';
                     const nameAttr = `tf_${tfCounter}`;
+                    // استخدام True و False بدلاً من صحيح/خطأ
                     radioGroup.innerHTML = `
-                        <label><input type="radio" name="${nameAttr}" value="صحيح" id="${nameAttr}_true"> صحيح</label>
-                        <label><input type="radio" name="${nameAttr}" value="خطأ" id="${nameAttr}_false"> خطأ</label>
+                        <label><input type="radio" name="${nameAttr}" value="True" id="${nameAttr}_true"> True</label>
+                        <label><input type="radio" name="${nameAttr}" value="False" id="${nameAttr}_false"> False</label>
                     `;
                     const printSpan = document.createElement('span');
                     printSpan.className = 'print-value';
@@ -435,7 +435,7 @@
                         select.id = selectId;
                         const defaultOption = document.createElement('option');
                         defaultOption.value = '';
-                        defaultOption.textContent = '-- اختر الإجابة --';
+                        defaultOption.textContent = '-- Select answer --';
                         select.appendChild(defaultOption);
                         allAnswers.forEach(ans => {
                             const opt = document.createElement('option');
@@ -460,7 +460,7 @@
                 container.appendChild(card);
             }
 
-            // إضافة زر الطباعة السفلي بعد الأسئلة (بجانب الزر الموجود)
+            // إضافة زر الطباعة السفلي بعد الأسئلة
             const bottomPrintDiv = document.createElement('div');
             bottomPrintDiv.className = 'button-group no-print';
             bottomPrintDiv.innerHTML = `<button id="printPdfBtnBottomDynamic" class="btn btn-primary" disabled><i class="fas fa-print"></i> تحميل الحل كـ PDF</button>`;
