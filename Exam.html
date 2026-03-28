@@ -150,7 +150,13 @@
         }
         .student-info-card .info-item { flex: 1; min-width: 200px; }
         .student-info-card label { font-weight: bold; display: block; margin-bottom: 8px; color: #0d6efd; }
-        .student-info-card input { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1rem; }
+        .student-info-card input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
         footer { text-align: center; margin-top: 40px; padding: 25px; border-top: 1px solid #dee2e6; color: #5f6368; }
         .loading { text-align: center; padding: 50px; font-size: 1.5rem; color: #0d6efd; }
         .info-message {
@@ -193,7 +199,8 @@
         </div>
         <div class="info-item">
             <label>الرقم الجامعي:</label>
-            <input type="text" id="studentId" placeholder="أدخل رقمك الجامعي">
+            <input type="text" id="studentId" placeholder="أدخل الرقم الجامعي" inputmode="numeric" pattern="\d*" 
+                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             <span class="print-value" data-for="studentId"></span>
         </div>
     </div>
@@ -207,10 +214,6 @@
 
     <div id="examContainer" class="info-message">
         <i class="fas fa-hourglass-start"></i> اضغط على "ابدأ الاختبار" لتحميل الأسئلة وبدء الوقت.
-    </div>
-
-    <div class="button-group no-print">
-        <button id="printPdfBtnBottom" class="btn btn-primary" disabled><i class="fas fa-print"></i> تحميل الحل كـ PDF</button>
     </div>
 
     <footer>
@@ -228,6 +231,18 @@
     function disableAllInputs(disabled) {
         const inputs = document.querySelectorAll('#examContainer input:not(#studentName):not(#studentId), #examContainer select');
         inputs.forEach(el => disabled ? el.setAttribute('disabled', 'disabled') : el.removeAttribute('disabled'));
+    }
+
+    function lockStudentInfo(lock) {
+        const nameField = document.getElementById('studentName');
+        const idField = document.getElementById('studentId');
+        if (lock) {
+            nameField.setAttribute('disabled', 'disabled');
+            idField.setAttribute('disabled', 'disabled');
+        } else {
+            nameField.removeAttribute('disabled');
+            idField.removeAttribute('disabled');
+        }
     }
 
     function updateTimerDisplay() {
@@ -258,7 +273,7 @@
                 localStorage.removeItem('examStartTime');
                 document.getElementById('startExamBtn').disabled = true;
                 document.getElementById('printPdfBtnTop').disabled = false;
-                document.getElementById('printPdfBtnBottom').disabled = false;
+                if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
             }
             updateTimerDisplay();
         }, 1000);
@@ -286,25 +301,26 @@
                         localStorage.removeItem('examStartTime');
                         document.getElementById('startExamBtn').disabled = true;
                         document.getElementById('printPdfBtnTop').disabled = false;
-                        document.getElementById('printPdfBtnBottom').disabled = false;
+                        if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
                     }
                     updateTimerDisplay();
                 }, 1000);
                 disableAllInputs(false);
+                lockStudentInfo(true);
                 document.getElementById('startExamBtn').disabled = true;
                 document.getElementById('printPdfBtnTop').disabled = false;
-                document.getElementById('printPdfBtnBottom').disabled = false;
+                if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
                 return true;
             } else {
                 localStorage.removeItem('examStartTime');
                 document.getElementById('startExamBtn').disabled = false;
                 document.getElementById('printPdfBtnTop').disabled = true;
-                document.getElementById('printPdfBtnBottom').disabled = true;
+                if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = true;
             }
         } else {
             document.getElementById('startExamBtn').disabled = false;
             document.getElementById('printPdfBtnTop').disabled = true;
-            document.getElementById('printPdfBtnBottom').disabled = true;
+            if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = true;
         }
         return false;
     }
@@ -369,7 +385,6 @@
                     const radioGroup = document.createElement('div');
                     radioGroup.className = 'radio-group';
                     const nameAttr = `tf_${tfCounter}`;
-                    // استخدام True و False بدلاً من صحيح/خطأ
                     radioGroup.innerHTML = `
                         <label><input type="radio" name="${nameAttr}" value="True" id="${nameAttr}_true"> True</label>
                         <label><input type="radio" name="${nameAttr}" value="False" id="${nameAttr}_false"> False</label>
@@ -460,7 +475,7 @@
                 container.appendChild(card);
             }
 
-            // إضافة زر الطباعة السفلي بعد الأسئلة
+            // إضافة زر الطباعة السفلي (مرة واحدة فقط)
             const bottomPrintDiv = document.createElement('div');
             bottomPrintDiv.className = 'button-group no-print';
             bottomPrintDiv.innerHTML = `<button id="printPdfBtnBottomDynamic" class="btn btn-primary" disabled><i class="fas fa-print"></i> تحميل الحل كـ PDF</button>`;
@@ -487,12 +502,13 @@
             const success = await buildExamFromXML();
             if (!success) return;
         }
+        // قفل حقول الاسم والرقم الجامعي
+        lockStudentInfo(true);
         disableAllInputs(false);
         startTimer(3600);
         examActive = true;
         document.getElementById('startExamBtn').disabled = true;
         document.getElementById('printPdfBtnTop').disabled = false;
-        document.getElementById('printPdfBtnBottom').disabled = false;
         if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
         localStorage.setItem('examStartTime', Date.now());
     }
@@ -502,11 +518,11 @@
         const alreadyActive = restoreTimerIfNeeded();
         if (alreadyActive) {
             await buildExamFromXML();
+            lockStudentInfo(true);
             disableAllInputs(false);
             examActive = true;
             document.getElementById('startExamBtn').disabled = true;
             document.getElementById('printPdfBtnTop').disabled = false;
-            document.getElementById('printPdfBtnBottom').disabled = false;
             if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
         } else {
             document.getElementById('examContainer').innerHTML = '<div class="info-message"><i class="fas fa-hourglass-start"></i> اضغط على "ابدأ الاختبار" لتحميل الأسئلة وبدء الوقت.</div>';
@@ -514,10 +530,6 @@
         }
         document.getElementById('startExamBtn').addEventListener('click', startExam);
         document.getElementById('printPdfBtnTop').addEventListener('click', () => {
-            if (examActive) window.print();
-            else alert("لا يمكن طباعة الحل قبل بدء الاختبار.");
-        });
-        document.getElementById('printPdfBtnBottom').addEventListener('click', () => {
             if (examActive) window.print();
             else alert("لا يمكن طباعة الحل قبل بدء الاختبار.");
         });
