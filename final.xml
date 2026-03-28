@@ -19,7 +19,12 @@
     <answer fraction="100"><text>true</text></answer>
     <answer fraction="0"><text>false</text></answer>
   </question>
-
+  <question type="truefalse">
+    <name><text>TF21: Program Counter Function</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The Program Counter (PC) register contains the address of the next instruction to be executed.</p>]]></text></questiontext>
+    <answer fraction="100"><text>true</text></answer>
+    <answer fraction="0"><text>false</text></answer>
+  </question>
   <question type="truefalse">
     <name><text>TF2: RAM Volatility</text></name>
     <questiontext format="html"><text><![CDATA[<p>RAM (Random Access Memory) is non‑volatile, meaning it retains data even when the power is turned off.</p>]]></text></questiontext>
@@ -164,7 +169,16 @@
     <answer fraction="0"><text>Input, Output, Storage</text></answer>
     <answer fraction="0"><text>Applications, Operating System, Drivers</text></answer>
   </question>
-
+  <question type="multichoice">
+    <name><text>MC36: Logical Shift Right Operation</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the result of performing a logical shift right by 1 bit on the binary number 10110101?</p>]]></text></questiontext>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text>01011010</text></answer>
+    <answer fraction="0"><text>11011010</text></answer>
+    <answer fraction="0"><text>10110110</text></answer>
+    <answer fraction="0"><text>01011011</text></answer>
+  </question>
   <question type="multichoice">
     <name><text>MC2: ALU Primary Function</text></name>
     <questiontext format="html"><text><![CDATA[<p>What is the primary function of the Arithmetic Logic Unit (ALU)?</p>]]></text></questiontext>
@@ -528,17 +542,6 @@
     <answer fraction="0"><text>1101</text></answer>
   </question>
 
-  <question type="multichoice">
-    <name><text>MC35: HTML Tag for Image</text></name>
-    <questiontext format="html"><text><![CDATA[<p>Which HTML tag is used to embed an image?</p>]]></text></questiontext>
-    <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
-    <answer fraction="0"><text>&lt;image&gt;</text></answer>
-    <answer fraction="100"><text>&lt;img&gt;</text></answer>
-    <answer fraction="0"><text>&lt;src&gt;</text></answer>
-    <answer fraction="0"><text>&lt;picture&gt;</text></answer>
-  </question>
-
   <!-- ===================== SECTION 3: ORDERING/MATCHING (15 questions) ===================== -->
   <question type="matching">
     <name><text>MATCH1: Machine Cycle Steps Order</text></name>
@@ -656,16 +659,6 @@
   </question>
 
   <question type="matching">
-    <name><text>MATCH13: HTML Tags</text></name>
-    <questiontext format="html"><text><![CDATA[<p>Match the HTML tag with its purpose.</p>]]></text></questiontext>
-    <shuffleanswers>true</shuffleanswers>
-    <subquestion><text>&lt;h1&gt;</text><answer><text>Heading level 1</text></answer></subquestion>
-    <subquestion><text>&lt;p&gt;</text><answer><text>Paragraph</text></answer></subquestion>
-    <subquestion><text>&lt;a href="..."&gt;</text><answer><text>Hyperlink</text></answer></subquestion>
-    <subquestion><text>&lt;img src="..."&gt;</text><answer><text>Image</text></answer></subquestion>
-  </question>
-
-  <question type="matching">
     <name><text>MATCH14: Machine Language Instruction Components</text></name>
     <questiontext format="html"><text><![CDATA[<p>Match the instruction part with its definition.</p>]]></text></questiontext>
     <shuffleanswers>true</shuffleanswers>
@@ -683,5 +676,14 @@
     <subquestion><text>Transport Layer (Layer 4)</text><answer><text>TCP, UDP</text></answer></subquestion>
     <subquestion><text>Application Layer (Layer 7)</text><answer><text>HTTP, FTP, SMTP</text></answer></subquestion>
   </question>
-
+  <question type="matching">
+    <name><text>MATCH16: Protocol Port Numbers</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Match each network protocol with its default port number.</p>]]></text></questiontext>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion><text>HTTP</text><answer><text>80</text></answer></subquestion>
+    <subquestion><text>HTTPS</text><answer><text>443</text></answer></subquestion>
+    <subquestion><text>FTP</text><answer><text>21</text></answer></subquestion>
+    <subquestion><text>SMTP</text><answer><text>25</text></answer></subquestion>
+    <subquestion><text>DNS</text><answer><text>53</text></answer></subquestion>
+  </question>
 </quiz>
