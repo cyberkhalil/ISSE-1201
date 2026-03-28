@@ -49,10 +49,31 @@
             padding: 20px;
             margin: 25px 0;
             border-radius: 12px;
+            direction: ltr;          /* الأسئلة من اليسار لليمين */
+            text-align: left;
         }
-        .question p { font-weight: 600; margin-bottom: 12px; font-size: 1.05rem; }
-        .radio-group { display: flex; gap: 25px; margin-top: 12px; flex-wrap: wrap; }
-        .radio-group label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .question p {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            direction: ltr;
+            text-align: left;
+        }
+        .radio-group {
+            display: flex;
+            gap: 25px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            direction: ltr;
+            justify-content: flex-start;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            direction: ltr;
+        }
         .matching-row {
             margin-bottom: 20px;
             padding: 12px;
@@ -63,8 +84,14 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
+            direction: ltr;
+            text-align: left;
         }
-        .matching-row strong { min-width: 180px; font-weight: 600; }
+        .matching-row strong {
+            min-width: 180px;
+            font-weight: 600;
+            direction: ltr;
+        }
         select {
             padding: 8px 12px;
             border-radius: 8px;
@@ -74,6 +101,7 @@
             font-family: inherit;
             flex: 1;
             min-width: 200px;
+            direction: ltr;
         }
         .print-value { display: none; }
         .timer-bar {
@@ -142,6 +170,10 @@
             body { background: white; }
             .container { padding: 10px; }
             .student-info-card { border: 1px solid #aaa; background: #fff; }
+            .question, .question p, .radio-group, .matching-row, select {
+                direction: ltr !important;
+                text-align: left !important;
+            }
         }
         .button-group { display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
     </style>
@@ -263,7 +295,7 @@
                 document.getElementById('startExamBtn').disabled = true;
                 document.getElementById('printPdfBtnTop').disabled = false;
                 document.getElementById('printPdfBtnBottom').disabled = false;
-                return true; // exam already active
+                return true;
             } else {
                 localStorage.removeItem('examStartTime');
                 document.getElementById('startExamBtn').disabled = false;
@@ -428,7 +460,7 @@
                 container.appendChild(card);
             }
 
-            // إضافة زر الطباعة السفلي بعد الأسئلة
+            // إضافة زر الطباعة السفلي بعد الأسئلة (بجانب الزر الموجود)
             const bottomPrintDiv = document.createElement('div');
             bottomPrintDiv.className = 'button-group no-print';
             bottomPrintDiv.innerHTML = `<button id="printPdfBtnBottomDynamic" class="btn btn-primary" disabled><i class="fas fa-print"></i> تحميل الحل كـ PDF</button>`;
@@ -437,7 +469,6 @@
             if (bottomBtn) {
                 bottomBtn.disabled = true;
                 bottomBtn.addEventListener('click', () => { if (examActive) window.print(); else alert("لا يمكن طباعة الحل قبل بدء الاختبار."); });
-                // ربطه مع الأزرار الأخرى
                 window.bottomPrintBtn = bottomBtn;
             }
 
@@ -452,38 +483,32 @@
 
     async function startExam() {
         if (examActive) return;
-        // بناء الأسئلة إذا لم تكن مبنية مسبقاً
         if (!examBuilt) {
             const success = await buildExamFromXML();
             if (!success) return;
         }
-        // تمكين جميع المدخلات
         disableAllInputs(false);
-        // بدء المؤقت
         startTimer(3600);
         examActive = true;
-        // تعطيل زر البدء وتمكين أزرار الطباعة
         document.getElementById('startExamBtn').disabled = true;
         document.getElementById('printPdfBtnTop').disabled = false;
+        document.getElementById('printPdfBtnBottom').disabled = false;
         if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
-        // حفظ بداية الوقت
         localStorage.setItem('examStartTime', Date.now());
     }
 
-    // تهيئة الصفحة: استعادة المؤقت إذا كان الاختبار قد بدأ سابقاً
     window.onload = async () => {
         bindStudentInfoPrint();
         const alreadyActive = restoreTimerIfNeeded();
         if (alreadyActive) {
-            // إذا كان الاختبار نشطاً بالفعل، نبني الأسئلة ونعرضها
             await buildExamFromXML();
             disableAllInputs(false);
             examActive = true;
             document.getElementById('startExamBtn').disabled = true;
             document.getElementById('printPdfBtnTop').disabled = false;
+            document.getElementById('printPdfBtnBottom').disabled = false;
             if (window.bottomPrintBtn) window.bottomPrintBtn.disabled = false;
         } else {
-            // غير نشط، نعرض رسالة الانتظار فقط
             document.getElementById('examContainer').innerHTML = '<div class="info-message"><i class="fas fa-hourglass-start"></i> اضغط على "ابدأ الاختبار" لتحميل الأسئلة وبدء الوقت.</div>';
             examBuilt = false;
         }
@@ -492,7 +517,10 @@
             if (examActive) window.print();
             else alert("لا يمكن طباعة الحل قبل بدء الاختبار.");
         });
-        // الزر السفلي سيضاف ديناميكياً عند بناء الأسئلة، لكننا نضيف مستمعاً للزر العلوي فقط هنا
+        document.getElementById('printPdfBtnBottom').addEventListener('click', () => {
+            if (examActive) window.print();
+            else alert("لا يمكن طباعة الحل قبل بدء الاختبار.");
+        });
     };
 </script>
 </body>
